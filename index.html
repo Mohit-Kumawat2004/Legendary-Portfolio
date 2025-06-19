@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohit Kumawat - Competitive Programmer & Full Stack Developer</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <link rel="Shortcut icon" href="https://www.codester.com/static/favicon.ico" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* Base styling for the navbar to allow positioning of effects */
+        /* Base styling for the navbar to allow positioning of effects */
+.navbar {
+    position: relative; /* Essential for positioning pseudo-elements */
+    overflow: hidden;   /* Ensures the effect stays within the navbar bounds */
+    /* Add some padding or height if needed, depends on your .navbar styling in style.css */
+    z-index: 10; /* Ensure navbar is above the effect if needed */
+}
+
+/* Pseudo-element for the continuous "energy" or "plasma" effect */
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: -200%; /* Start higher to allow for diagonal movement */
+    left: -200%; /* Start further left */
+    width: 400%; /* Make it large enough to cover diagonal movement */
+    height: 400%; /* Make it large enough to cover diagonal movement */
+    background: conic-gradient(from 0deg at 50% 50%,
+                                #00f0ff 0%, #00aaff 10%, #aa00ff 20%,
+                                #ff00aa 30%, #ff0000 40%, #ffff00 50%,
+                                #00ff00 60%, #00ffff 70%, #00aaff 80%,
+                                #00f0ff 90%, #00f0ff 100%);
+    mix-blend-mode: screen;
+    opacity: 0.3;
+    filter: blur(15px);
+    animation:
+        infiniteEnergyFlow 8s linear infinite,
+        subtleFlicker 1.5s ease-in-out infinite alternate;
+    z-index: -1;
+    /* --- IMPORTANT FIX --- */
+    pointer-events: none; /* Make the pseudo-element ignore mouse events */
+}
+
+/* Pseudo-element for a secondary, faster shimmer or "spark" effect */
+.navbar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+                                rgba(0,255,255,0) 0%,
+                                rgba(0,255,255,0.2) 20%,
+                                rgba(0,255,255,0.5) 50%,
+                                rgba(0,255,255,0.2) 80%,
+                                rgba(0,255,255,0) 100%);
+    opacity: 0; /* Initially hidden */
+    filter: blur(5px);
+    animation:
+        shimmerEffect 2s linear infinite;
+    z-index: 0; /* Behind content, in front of main energy flow */
+    /* --- IMPORTANT FIX --- */
+    pointer-events: none; /* Make the pseudo-element ignore mouse events */
+}
+
+/* Optional: Add a subtle text shadow to nav links for more glow */
+.nav-link {
+    text-shadow: 0 0 5px rgba(0,255,255,0.7), 0 0 10px rgba(0,255,255,0.5);
+    transition: text-shadow 0.3s ease-in-out;
+    /* --- IMPORTANT FIX --- */
+    position: relative; /* Ensure it creates a new stacking context */
+    z-index: 2; /* Make sure nav links are above the pseudo-elements */
+}
+.nav-link:hover {
+    text-shadow: 0 0 8px rgba(0,255,255,1), 0 0 15px rgba(0,255,255,0.8), 0 0 20px rgba(0,255,255,0.6);
+}
+
+/* Keyframes for the continuous diagonal energy flow */
+@keyframes infiniteEnergyFlow {
+    0% {
+        transform: translate(0%, 0%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Keyframes for a subtle flickering of the main energy flow */
+@keyframes subtleFlicker {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.25; }
+    100% { opacity: 0.3; }
+}
+
+/* Keyframes for a shimmering light effect */
+@keyframes shimmerEffect {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Quick fade in */
+    }
+    50% {
+        transform: translateX(100%);
+        opacity: 0; /* Fade out as it moves across */
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Adjustments for responsiveness if needed - consider how the effects look on small screens */
+@media (max-width: 768px) {
+    .navbar::before {
+        filter: blur(10px); /* Less blur on smaller screens */
+        opacity: 0.25;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="code-bracket">&lt;</span>
+                <span class="logo-text">Mohit Kumawat</span>
+                <span class="code-bracket">/&gt;</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#badges" class="nav-link">Badges</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#achievements" class="nav-link">CP Stats</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="accent-text">Mohit Kumawat</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        <span class="typed-text">Built with Coffee, Driven by Logic. <span class="animated-emoji">☕</span> <span class="animated-emoji">💻</span></span>
+                        <span class="cursor">|</span>
+                    </p>
+                    <p class="hero-description">
+                        🔥 Full-stack ninja & DSA junkie 🔥 — building cool stuff and surviving on caffeine and console.log() therapy.
+                        <br>
+                        ✨ Sometimes my code surprises me too ✨ — but if it compiles and runs, it’s practically a feature. 😂 
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-primary">Resume</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-buttons">
+                                <span class="btn-close"></span>
+                                <span class="btn-minimize"></span>
+                                <span class="btn-maximize"></span>
+                            </div>
+                            <span class="window-title">my_development_philosophy.js</span> </div>
+                    <div class="code-content">
+                        <pre><code><span class="code-comment">// My approach to building awesome software</span>
+<span class="code-keyword">function</span> <span class="code-function">createImpactfulSolution</span>(<span class="code-param">problem</span>) {
+    <span class="code-keyword">let</span> idea = <span class="code-function">brainstorm</span>(problem);
+    <span class="code-function">designArchitecture</span>(idea);
+    <span class="code-function">writeCleanAndEfficientCode</span>();
+    <span class="code-function">ensureScalabilityAndPerformance</span>();
+    <span class="code-keyword">return</span> <span class="code-string">"delightfulUserExperience"</span>;
+}
+
+<span class="code-comment">// Always learning, always iterating</span>
+<span class="code-keyword">while</span>(<span class="code-keyword">true</span>) {
+    <span class="code-function">absorbNewTechnologies</span>();
+    <span class="code-function">solveRealWorldProblems</span>();
+    <span class="code-function">contributeToCommunity</span>();
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Yo, I’m Mohit Kumawat — final semester Computer Application guy who codes like it’s second nature and thrives on turning bugs into features (intentionally or not 👀).
+
+                        I’m all about full stack wizardry, competitive programming battles, and crafting cool stuff with logic, caffeine, and a sprinkle of beautiful chaos. Breaking things, fixing them better — that’s the routine. Learning? Non-stop.
+                        
+                        Let’s build something badass together, or at least have a good laugh while trying. I promise I’m more than just a bunch of semicolons and curly braces.
+                    </p>
+                    <p>
+                        Skilled in C, C++, Python, JavaScript, HTML5, CSS3, Node.js, Tailwind, MySQL, and Git/GitHub. Currently diving into the backend world with Express.js, and MongoDB — because front-end wasn’t challenging enough (just kidding, JS, you win).
+
+I’ve built projects, participated in hackathons, and love turning ideas into real, working applications — preferably without segmentation faults.
+Also comfortable with problem-solving, data structures & algorithms, and pretending that debugging is a personality trait.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">2000+</span>
+                            <span class="stat-label">Problems Solved</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">30+</span>
+                            <span class="stat-label">Contests Participated</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">40+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img class="abc" src="/Certificates/me.jpeg" alt="">
+                            </div>
+                            <h3>Mohit Kumawat</h3>
+                            <p>Competitive Programmer X Full Stack Developer</p>
+                        </div>
+                        <div class="profile-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Jaipur</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Computer Applications</span>
+                            </div>
+                            <div class="info-item">
+                                <!-- <i class="fas fa-trophy"></i>
+                                <span>Codeforces Expert</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-code"></i>
+                        Programming Languages
+                    </h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">C++</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="99%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="100%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">C</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">MYSQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="100%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Core Java</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-project-diagram"></i>
+                        Algorithms & DS
+                    </h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Dynamic Programming</span>
+                        <span class="skill-tag">Tree Structures</span>
+                        <span class="skill-tag">Greedy Algorithms</span>
+                        <span class="skill-tag">Number Theory</span>
+                        <span class="skill-tag">String Algorithms</span>
+                        <span class="skill-tag">Binary Search</span>
+                        <span class="skill-tag">Backtracking</span>
+                        <span class="skill-tag">Bit Manipulation</span>
+                        <span class="skill-tag">Data Structures</span>
+                        <span class="skill-tag">Sorting Algorithms</span>
+                        <span class="skill-tag">Searching Algorithms</span>
+                        <span class="skill-tag">Hashing</span>
+                        <span class="skill-tag">Recursion</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-tools"></i>
+                        Technologies & Tools
+                    </h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Sci-kit Learn</span>
+                        <span class="skill-tag">Tkinter</span>
+                        <span class="skill-tag">PyGame</span>
+                        <span class="skill-tag">MYSQL Workbench</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">ExpressJS</span>
+                        <span class="skill-tag">NumPy</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section-->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">My Certificates</h2>
+            <div class="certifications-carousel">
+                <button class="carousel-arrow left-arrow">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-track">
+                    <div class="certificate-card">
+                        <img src="Certificates/GeeksForGeeks-160-Days-Completion.jpg" alt="Certificate 1 Title">
+                        </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/sql_advanced certificate_page-0001.jpg" alt="Certificate 2 Title">
+                    </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/Level-1-Ninja-Slayground-2.0.jpeg" alt="Certificate 3 Title">
+                    </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/Level-2-Ninja-Slayground-2.0.png" alt="Certificate 4 Title">
+                    </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/Level 3 certificate.pdf_page-0001.jpg" alt="Certificate 5 Title">
+                    </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/DevTown-Appreciation.jpeg" alt="Certificate 6 Title">
+                    </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/4e572b9c-ca70-4154-9465-aef9f76f42b5.png" alt="Certificate 7 Title">
+                    </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/6236d86f-9439-4569-877b-0f22bd120dca.png" alt="Certificate 8 Title">
+                    </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/Mohit_Cloud_Certificate.jpg" alt="Certificate 9 Title">
+                    </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/Oracle-Certification.jpg" alt="Certificate 10 Title">
+                    </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/af6a4e07-f420-4f62-8565-fc2e8c34c53b.png" alt="Certificate 11 Title">
+                    </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/e2fd22bd-1456-4ad6-8cef-c881071f0c9a.png" alt="Certificate 12 Title">
+                    </div>
+                    <div class="certificate-card">
+                        <img src="Certificates/Hackerrank-Problem-Solving.jpeg" alt="Certificate 13 Title">
+                    </div>
+                </div>
+                <button class="carousel-arrow right-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Badges Section -->
+    <section id="badges" class="badges">
+        <div class="container">
+            <h2 class="section-title">My Badges</h2>
+            <div class="badges-carousel">
+                <button class="carousel-arrow left-arrow">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-track badges-track">
+                    <div class="badge-card">
+                        <img src="assets/500 Days Badge.gif" alt="500 Days Badge">
+                        <div class="badge-info">
+                            <h4>500 Days</h4>
+                            <p>Active</p>
+                        </div>
+                    </div>
+                    <div class="badge-card">
+                        <img src="assets/365 Days Badge.gif" alt="365 Days Badge - 2025-04-10">
+                        <div class="badge-info">
+                            <h4>365 Days</h4>
+                            <p>Active</p>
+                        </div>
+                    </div>
+                    <div class="badge-card">
+                        <img src="assets/2550.gif" alt="50 Days Badge - 2025-02-20">
+                        <div class="badge-info">
+                            <h4>50 Days</h4>
+                            <p>2025</p>
+                        </div>
+                    </div>
+                    <div class="badge-card">
+                        <img src="assets/2024-200.gif" alt="200 Days Badge - 2024-12-22">
+                        <div class="badge-info">
+                            <h4>200 Days</h4>
+                            <p>2024</p>
+                        </div>
+                    </div>
+                    <div class="badge-card">
+                        <img src="assets/2024-100-new.gif" alt="100 Days Badge - 2024-09-11">
+                        <div class="badge-info">
+                            <h4>100 Days</h4>
+                            <p>2024</p>
+                        </div>
+                    </div>
+                    <div class="badge-card">
+                        <img src="assets/2024-50.gif" alt="50 Days Badge - 2024-07-21">
+                        <div class="badge-info">
+                            <h4>50 Days</h4>
+                            <p>2024</p>
+                        </div>
+                    </div>
+                    </div>
+                <button class="carousel-arrow right-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-hotel"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Mohit-Kumawat2004/Hotel-Management-System" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">StayMaster – Command comfort – Control every check-in.</h3>
+                    <p class="project-description">
+                        A bold name that screams total control over guest stays, staff, and scheduling. A fierce name for a system that dominates every aspect of hotel operations—from booking to billing.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Tkinter</span>
+                        <span class="tech-tag">MySQL Workbench</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Jinja2</span>
+                    </div>
+                </div>
+
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Mohit-Kumawat2004/Gesture-Shooter-Game-K" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">PhantomShots – No controller – No mercy – Just raw hand-powered destruction.</h3>
+                    <p class="project-description">
+                        In a futuristic battlefield, your hands channel raw firepower through machine vision. Lock, load, and eliminate targets like a cybernetic ghost. Become the phantom that strikes with deadly precision. Evade, aim, and fire using only your hands in this OpenCV-powered war zone.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Computer Vision</span>
+                    </div>
+                </div>
+
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Mohit-Kumawat2004/Tetris-Game" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">TetriXtreme – Old school game – New school chaos.</h3>
+                    <p class="project-description">
+                        Experience the thrill of Tetris with a modern twist. This project showcases the timeless gameplay of Tetris, enhanced with new features and improved graphics. Challenge yourself and see how long you can last!
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pygame</span>
+                        <span class="tech-tag">Game Development</span>
+                        <span class="tech-tag">2D Graphics</span>
+                        <span class="tech-tag">Animation</span>
+                        <span class="tech-tag">User Interface</span>
+                    </div>
+                </div>
+
+                
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Mohit-Kumawat2004/Keyblade-War-of-Words" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="https://mohit-kumawat2004.github.io/Keyblade-War-of-Words/" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">KeyBlade: War-of-Words</h3>
+                    <p class="project-description">
+                        <b>Unleash Your Inner Typing God.</b>This isn't just a tutor; it's a battleground for blazing speed and pinpoint accuracy. Dominate the keyboard with real-time feedback, a glowing virtual battlefield for your fingers, and explosive animations that forge unbreakable muscle memory.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">API</span>
+                        <span class="tech-tag">Animation</span>
+
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Mohit-Kumawat2004/Github-Profile-Generator" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="https://mohit-kumawat2004.github.io/Github-Profile-Generator/" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">GitHunt – Your Gateway to Searching and Viewing GitHub Profiles</h3>
+                    <p class="project-description">
+                        GitHunt is a web application that allows users to search for GitHub profiles and view their repositories, contributions, and other relevant information. It provides a user-friendly interface for exploring GitHub profiles and discovering new projects.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML 5</span>
+                        <span class="tech-tag">CSS 3</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Mohit-Kumawat2004/Todo_List_Expo_2025" class="project-link"><i class="fab fa-github"></i></a>
+                            <!-- <a href="https://mohit-kumawat2004.github.io/Tetris-Game/" class="project-link"><i class="fas fa-external-link-alt"></i></a> -->
+                        </div>
+                    </div>
+                    <h3 class="project-title">ToDo-List-2025 – Your tasks, organized.</h3>
+                    <p class="project-description">
+                        Stay on top of your tasks with ToDo-List-2025. This project offers a sleek and modern interface for managing your to-do lists, complete with features like due dates, priority levels, and intuitive categorization. Get ready to boost your productivity!
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML 5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">React JS</span>
+                        <span class="tech-tag">TypeScript</span>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title">Competitive Programming Achievements</h2>
+                            <div class="skill-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-trophy"></i>
+                        Platforms
+                    </h3>
+                    <div class="platform-stats">
+                        <div class="platform-item" onclick="window.location.href='https://www.hackerrank.com/profile/Mohit_Kumawat04';" style="cursor: pointer;">
+                            <div class="platform-icon">HR</div>
+                            <div class="platform-info">
+                                <span class="platform-name">HackerRank</span>
+                                <span class="platform-rating">Hackos: 15000+</span>
+                            </div>
+                        </div>
+                        <div class="platform-item" onclick="window.location.href='https://leetcode.com/u/Mohit-Kumawat04/';" style="cursor: pointer;">
+                            <div class="platform-icon">LC</div>
+                            <div class="platform-info">
+                                <span class="platform-name">LeetCode</span>
+                                <span class="platform-rating">1500+ Rating</span>
+                            </div>
+                        </div>
+                        <div class="platform-item" onclick="window.location.href='https://www.naukri.com/code360/profile/MohitKumawat04';" style="cursor: pointer;">
+                            <div class="platform-icon">CN</div>
+                            <div class="platform-info">
+                                <span class="platform-name">Coding Ninjas</span>
+                                <span class="platform-rating">2X Topper</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<br>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>500 Days Streak</h3>
+                    <p>LeetCode</p>
+                    <span class="achievement-date">March 2025</span>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Technical Content Writer</h3>
+                    <p>GeeksForGeeks</p>
+                    <span class="achievement-date">June 2025</span>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>HackerRank Star</h3>
+                    <p>Achieved 5-Star Rating</p>
+                    <span class="achievement-date">January 2024</span>
+                </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect!</h3>
+                    <p>
+                        I'm always excited to discuss new opportunities, collaborate on interesting projects, 
+                        or just chat about algorithms and competitive programming.
+                    </p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>unofficialkumawatmohit7678@gmail.com</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fab fa-linkedin"></i>
+                            <span>https://www.linkedin.com/in/mohit-kumawa435ab624bt-/</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fab fa-github"></i>
+                            <span>https://github.com/Mohit-Kumawat2004</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-code"></i>
+                            <span>https://www.naukri.com/code360/profile/MohitKumawat</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Subject</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; Mohit Kumawat — Built with <i class="fas fa-code"></i>, <i class="fas fa-coffee"></i>, and a hint of madness 💻🔥</p>
+                    <p>Inspired by the beauty of code and the thrill of problem-solving. Let's connect and create something amazing together!</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/Mohit-Kumawat2004" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/mohit-kumawa435ab624bt-/" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="./main.js"></script>
+    <script>
+        // Basic JavaScript for the hamburger menu (if not already in an external main.js)
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            // Close nav menu when a link is clicked (for single-page navigation)
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
