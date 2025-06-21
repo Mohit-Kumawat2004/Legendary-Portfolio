@@ -9,23 +9,19 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <style>
-        /* Base styling for the navbar to allow positioning of effects */
-        /* Base styling for the navbar to allow positioning of effects */
 .navbar {
-    position: relative; /* Essential for positioning pseudo-elements */
-    overflow: hidden;   /* Ensures the effect stays within the navbar bounds */
-    /* Add some padding or height if needed, depends on your .navbar styling in style.css */
-    z-index: 10; /* Ensure navbar is above the effect if needed */
+    position: relative; 
+    overflow: hidden;   
+    z-index: 10; 
 }
 
-/* Pseudo-element for the continuous "energy" or "plasma" effect */
 .navbar::before {
     content: '';
     position: absolute;
-    top: -200%; /* Start higher to allow for diagonal movement */
-    left: -200%; /* Start further left */
-    width: 400%; /* Make it large enough to cover diagonal movement */
-    height: 400%; /* Make it large enough to cover diagonal movement */
+    top: -200%; 
+    left: -200%; 
+    width: 400%; 
+    height: 400%; 
     background: conic-gradient(from 0deg at 50% 50%,
                                 #00f0ff 0%, #00aaff 10%, #aa00ff 20%,
                                 #ff00aa 30%, #ff0000 40%, #ffff00 50%,
@@ -155,11 +151,10 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">
-                        Hi, I'm <span class="accent-text">Mohit Kumawat</span>
+                        <span class="bounce-heading">Hi, I'm <span class="accent-text">Mohit Kumawat</span></span>
                     </h1>
                     <p class="hero-subtitle">
                         <span class="typed-text">Built with Coffee, Driven by Logic. <span class="animated-emoji">☕</span> <span class="animated-emoji">💻</span></span>
-                        <span class="cursor">|</span>
                     </p>
                     <p class="hero-description">
                         🔥 Full-stack ninja & DSA junkie 🔥 — building cool stuff and surviving on caffeine and console.log() therapy.
@@ -206,7 +201,7 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title breathe-heading">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
                     <p>
@@ -269,7 +264,7 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title breathe-heading">Technical Skills</h2>
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3 class="category-title">
@@ -364,7 +359,7 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
     <!-- Certifications Section-->
     <section id="certifications" class="certifications">
         <div class="container">
-            <h2 class="section-title">My Certificates</h2>
+            <h2 class="section-title breathe-heading">My Certificates</h2>
             <div class="certifications-carousel">
                 <button class="carousel-arrow left-arrow">
                     <i class="fas fa-chevron-left"></i>
@@ -421,7 +416,7 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
     <!-- Badges Section -->
     <section id="badges" class="badges">
         <div class="container">
-            <h2 class="section-title">My Badges</h2>
+            <h2 class="section-title breathe-heading">My Badges</h2>
             <div class="badges-carousel">
                 <button class="carousel-arrow left-arrow">
                     <i class="fas fa-chevron-left"></i>
@@ -482,7 +477,7 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title breathe-heading">Featured Projects</h2>
             <div class="projects-grid">
 
                 <div class="project-card">
@@ -632,7 +627,7 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
     <!-- Achievements Section -->
     <section id="achievements" class="achievements">
         <div class="container">
-            <h2 class="section-title">Competitive Programming Achievements</h2>
+            <h2 class="section-title breathe-heading">Competitive Programming Achievements</h2>
                             <div class="skill-category">
                     <h3 class="category-title">
                         <i class="fas fa-trophy"></i>
@@ -696,7 +691,7 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title breathe-heading">Get In Touch</h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Let's Connect!</h3>

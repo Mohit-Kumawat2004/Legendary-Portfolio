@@ -5,16 +5,48 @@
     box-sizing: border-box;
 }
 
+/*Breathing Effects*/
+@keyframes breathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); } /* Slightly larger */
+    100% { transform: scale(1); }
+}
+.breathe-heading{
+    display: inline-block; /* Essential for transform to work correctly on inline elements */
+    animation: breathe 0.8s ease-in-out infinite alternate; /* Apply the breathing animation */
+}
+
+h2{
+    color: var(--accent-green);
+    text-shadow: 0 0 10px rgba(0, 255, 225, 0.5), 0 0 20px rgba(0, 255, 225, 0.3);
+}
+
+/*Boncing Efffects*/
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    20% { transform: translateY(-18px); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-6px); }
+    80% { transform: translateY(-2px); }
+}
+
+.bounce-heading {
+    display: inline-block;
+    animation: bounce 1s infinite;
+}
+
+
+
+
+
+
+
 /* --- Animation for Floating/Pulsing Emojis --- */
 
 .animated-emoji {
     display: inline-block; 
     animation: pulse-emoji 2s ease-in-out infinite alternate; /* Option 2: Subtle grow and shrink pulse */
 }
-
-
-
-
 
 
 /* Keyframes for the Pulsing animation (Alternative) */
@@ -41,7 +73,7 @@
     font-size: 2.5em;
     margin-bottom: 40px;
     color: var(--text-primary); /* Your neon color */
-    text-shadow: 0 0 10px white, 0 0 20px rgba(0, 255, 225, 0.3);
+    text-shadow: 0 0 10px rgba(0, 255, 225, 0.5), 0 0 20px rgba(0, 255, 225, 0.3);
 }
 
 .certifications-carousel {
@@ -476,6 +508,7 @@ body {
 .cursor {
     color: var(--accent-orange);
     animation: blink 1s infinite;
+    display: none !important; 
 }
 
 @keyframes blink {
@@ -624,6 +657,8 @@ body {
     margin-bottom: 3rem;
     color: var(--text-primary);
     position: relative;
+    width: 100%;
+    display: block
 }
 
 .section-title::after {
@@ -746,11 +781,11 @@ body {
     border-radius: 1rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border-color);
-    transition: var(--transition-smooth);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .skill-category:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05) !important;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -1014,11 +1049,11 @@ body {
 }
 
 .achievement-card:hover::before {
-    left: 100%;
+    left: 300%;
 }
 
 .achievement-card:hover {
-    transform: scale(1.05);
+    transform: scale(2.05);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
