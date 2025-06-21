@@ -32,6 +32,31 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
+
+
+  const track = document.querySelector(".carousel-track");
+  const leftZone = document.querySelector(".carousel-hover-zone.left");
+  const rightZone = document.querySelector(".carousel-hover-zone.right");
+  let scrollInterval = null;
+
+  function startScroll(direction) {
+    stopScroll();
+    scrollInterval = setInterval(() => {
+      track.scrollLeft += direction * 10; // Adjust speed if needed
+    }, 16); // ~60fps
+  }
+  function stopScroll() {
+    if (scrollInterval) clearInterval(scrollInterval);
+    scrollInterval = null;
+  }
+
+  if (leftZone && rightZone && track) {
+    leftZone.addEventListener("mouseenter", () => startScroll(-1));
+    leftZone.addEventListener("mouseleave", stopScroll);
+    rightZone.addEventListener("mouseenter", () => startScroll(1));
+    rightZone.addEventListener("mouseleave", stopScroll);
+  }
+
   let currentIndex = 0;
   let cardVisibleWidth = 0; // Actual width of a card including margin
 
@@ -603,16 +628,6 @@ window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
 
-// Parallax effect for hero section
-window.addEventListener("scroll", () => {
-  const scrolled = window.pageYOffset;
-  const parallaxElements = document.querySelectorAll(".hero-visual");
-
-  parallaxElements.forEach((element) => {
-    const speed = 0.3;
-    element.style.transform = `translateY(${scrolled * speed}px)`;
-  });
-});
 
 // Add hover effects for project cards
 document.querySelectorAll(".project-card").forEach((card) => {

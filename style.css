@@ -5,6 +5,149 @@
     box-sizing: border-box;
 }
 
+/*Fas Fa LOGOS*/
+.fas, .fa, .fab, .far, .fal, .fad {
+    color: var(--accent-orange);
+    text-shadow: 0 0 8px purple, 0 0 16px var(--accent-green);
+}
+
+
+/*Circular Barsssss*/
+/* Circular Skill Progress Bar */
+.circle-skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.circle-progress {
+    --size: 90px;
+    --stroke: 10px;
+    --percentage: 75; /* Default, override inline */
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(
+        var(--accent-orange) calc(var(--percentage) * 1%), 
+        var(--accent-orange) calc(var(--percentage) * 1%), 
+        #232f3e 0
+    );
+    box-shadow: 0 0 12px #00ffe1, 0 0 24px #00ffe1;
+}
+
+.circle-progress::before {
+    content: '';
+    position: absolute;
+    width: calc(var(--size) - var(--stroke) * 2);
+    height: calc(var(--size) - var(--stroke) * 2);
+    background: var(--card-bg);
+    border-radius: 50%;
+    top: var(--stroke);
+    left: var(--stroke);
+    z-index: 1;
+}
+
+.circle-label {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    z-index: 2;
+    white-space: nowrap;
+}
+
+.circle-value {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--accent-white);
+    z-index: 2;
+}
+.circle-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    gap: 2rem 2.5rem;
+    justify-items: center;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+    .circle-skills-grid {
+        grid-template-columns: 1fr; /* Stack on small screens */
+    }
+}
+
+
+
+
+
+
+/* Blob Container */
+.blob-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+  }
+  
+  /* Blob Shape */
+  .blob-shape svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 25px #00cec9);
+    color: var(--accent-blue)
+  }
+  
+  /* Image inside the blob */
+  .home-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .home-image img {
+    width: 400%;
+    max-width: 400px;
+    height: auto;
+    z-index: 2;
+    position: relative;
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  /* Optional floating animation */
+  @keyframes float {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  /* Optional for shadow behind blob */
+  .blob-shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+  }
+  
+
+
 /*Breathing Effects*/
 @keyframes breathe {
     0% { transform: scale(1); }
@@ -29,6 +172,14 @@ h2{
     60% { transform: translateY(-6px); }
     80% { transform: translateY(-2px); }
 }
+
+@keyframes bounce-card {
+    0%, 100% { transform: scale(1); }
+    30% { transform: scale(1.08) translateY(-12px); }
+    50% { transform: scale(0.98) translateY(0); }
+    70% { transform: scale(1.03) translateY(-6px); }
+}
+
 
 .bounce-heading {
     display: inline-block;
@@ -76,17 +227,19 @@ h2{
     text-shadow: 0 0 10px rgba(0, 255, 225, 0.5), 0 0 20px rgba(0, 255, 225, 0.3);
 }
 
-.certifications-carousel {
-    position: relative;
-    overflow: hidden; /* Hide the overflowing certificate cards */
-    padding: 20px 0; /* Add some vertical padding for arrows/shadows */
-}
-
-.carousel-track {
+.certifications-carousel .carousel-track {
     display: flex;
-    transition: transform 0.5s ease-in-out; /* Smooth scrolling animation */
-    /* Adjust width to ensure all cards fit and can be scrolled */
-    /* This will be dynamic based on JS, but flex container handles it */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 2rem;
+    padding: 1rem 0;
+    scrollbar-color: #00ffe1 #232f3e;
+    scrollbar-width: thin;
+}
+.certifications-carousel .carousel-track::-webkit-scrollbar {
+    height: 12px;
+    background: #232f3e;
+    border-radius: 8px;
 }
 
 .certificate-card {
@@ -98,7 +251,7 @@ h2{
     border: 2px solid #00ffe1; /* Neon border */
     border-radius: 8px;
     overflow: hidden; /* Important to clip image if it goes outside, though object-fit should prevent this */
-    box-shadow: 0 0 15px rgba(0, 255, 225, 0.4); /* Neon shadow */
+    box-shadow: 0 0 20px #00ffe1, 0 0 40px #00ffe1;/* Neon shadow */
     display: flex; /* Use flex to center the image within the card */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
@@ -118,22 +271,26 @@ h2{
     transform: scale(1.05); /* Slight zoom effect on hover */
     box-shadow: 0 0 25px rgba(0, 255, 225, 0.6); /* Stronger neon shadow on hover */
 }
-.carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for arrows */
-    color: #00ffe1; /* Neon color for arrows */
-    border: none;
-    font-size: 2em; /* Larger arrow icons */
-    padding: 15px 10px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 50%; /* Make arrows circular */
-    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 255, 225, 0.3); /* Soft neon glow */
-}
 
+.carousel-hover-zone {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    z-index: 5;
+    pointer-events: auto;
+}
+.carousel-hover-zone.left {
+    left: 0;
+}
+.carousel-hover-zone.right {
+    right: 0;
+}
+@media (max-width: 900px) {
+    .carousel-hover-zone {
+        display: none; /* Hide on mobile */
+    }
+}
 /* Responsive adjustments for number of visible cards */
 @media (min-width: 768px) {
     .certificate-card {
@@ -150,24 +307,6 @@ h2{
 }
 
 
-.carousel-arrow:hover {
-    background: rgba(0, 0, 0, 0.8);
-    color: #00b3a1; /* A slightly darker neon color on hover */
-    box-shadow: 0 0 20px rgba(0, 255, 225, 0.7);
-}
-
-.carousel-arrow:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-.left-arrow {
-    left: 0px; /* Position at the very left edge */
-}
-
-.right-arrow {
-    right: 0px; /* Position at the very right edge */
-}
-
 
 
 
@@ -175,7 +314,7 @@ h2{
 /*Badges*/
 .badges {
     padding: 80px 0;
-    background-color: #0b143de0; /* Dark background, consistent with other sections */
+    background-color: #0e1c39; /* Dark background, consistent with other sections */
     color: #e0e0e0; /* Light text color */
     text-align: center;
 }
@@ -211,11 +350,12 @@ h2{
     height: calc(192px * 1.1547); /* Height for a perfect hexagon (width * sqrt(3)/2 * 2) */
     margin: 0 10px; /* Horizontal space between badges */
     background-color: #1f2937; /* Matching background of other cards */
-    border: none; /* Neon border */
-    box-shadow: 0 0 15px rgba(0, 255, 225, 0.4); /* Neon shadow */
+    border: 2px solid #00ffe1 ; /* Neon border */
+    box-shadow: none; /* Neon shadow */
     position: relative;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); /* Hexagonal shape */
     display: flex;
+    z-index: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -223,6 +363,18 @@ h2{
     overflow: hidden; /* Hide anything outside the clipped path */
     padding: 5px; /* Small internal padding */
     box-sizing: border-box; /* Include padding in dimensions */
+}
+
+.badge-card::before {
+    content: '';
+    position: absolute;
+    inset: -12px; /* Glow size, adjust as needed */
+    z-index: -1;
+    border-radius: 20px; /* Softens the glow corners */
+    background: none;
+    box-shadow: 0 0 32px 12px #00ffe1, 0 0 64px 24px #00ffe1;
+    pointer-events: none;
+    /* No clip-path here, so the glow is not clipped */
 }
 
 .badge-card img {
@@ -405,6 +557,7 @@ body {
     font-weight: 500;
     transition: var(--transition-smooth);
     position: relative;
+    font-size: larger;
 }
 
 .nav-link:hover,
@@ -568,87 +721,9 @@ body {
 }
 
 /* Code Window */
-.hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.code-window {
-    background: var(--secondary-bg);
-    border-radius: 0.75rem;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border-color);
-    width: 100%;
-    max-width: 500px;
-}
 
-.window-header {
-    background: var(--card-bg);
-    padding: 0.75rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border-bottom: 1px solid var(--border-color);
-}
 
-.window-buttons {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.window-buttons span {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.btn-close {
-    background: #ef4444;
-}
-
-.btn-minimize {
-    background: #f59e0b;
-}
-
-.btn-maximize {
-    background: var(--accent-green);
-}
-
-.window-title {
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    font-family: var(--font-mono);
-}
-
-.code-content {
-    padding: 1.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    line-height: 1.6;
-    overflow-x: auto;
-}
-
-.code-comment {
-    color: #65a30d;
-}
-
-.code-keyword {
-    color: #3b82f6;
-}
-
-.code-string {
-    color: #f59e0b;
-}
-
-.code-function {
-    color: #ec4899;
-}
-
-.code-number {
-    color: #8b5cf6;
-}
 
 /* Section Styles */
 .section-title {
@@ -720,8 +795,15 @@ body {
     background: var(--card-bg);
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--border-color);
+    box-shadow: 0 0 20px #00ffe1, 0 0 40px #00ffe1; /* Neon glow */
+    border: 2px solid #00ffe1;
+}
+
+.profile-card:hover {
+    animation: bounce-card 0.3s;
+    box-shadow: 0 0 32px 12px #00ffe1, 0 0 64px 24px #00ffe1;
+    border-color: #00ffe1;
+    transition: box-shadow 0.3s, border-color 0.3s;
 }
 
 .profile-header {
@@ -779,14 +861,15 @@ body {
     background: var(--card-bg);
     padding: var(--card-padding);
     border-radius: 1rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
+    border: 2px solid #00ffe1; /* Neon border */
+    box-shadow: 0 0 20px #00ffe1, 0 0 40px #00ffe1; /* Neon glow */
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .skill-category:hover {
     transform: scale(1.05) !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border: 2px solid #00ffe1; /* Neon border */
+    box-shadow: 0 0 20px #00ffe1, 0 0 40px #00ffe1; /* Neon glow */
 }
 
 .category-title {
@@ -916,7 +999,8 @@ body {
     background: var(--card-bg);
     border-radius: 1rem;
     padding: var(--card-padding);
-    border: 1px solid var(--border-color);
+    border: 2px solid #00ffe1; /* Neon border */
+    box-shadow: 0 0 20px #00ffe1, 0 0 40px #00ffe1; /* Neon glow */
     transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
@@ -933,15 +1017,18 @@ body {
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 20px #00ffe1, 0 0 40px #00ffe1, 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.abc{
+
+.abc {
     height: 250px;
-    width: 150px;
-    border-radius: 100%;
-    border: 2px solid ;
+    width: 250px; /* Changed to match height for a perfect circle */
+    border-radius: 50%; /* Creates a circular shape */
+    border: 2px solid #00ffcc; /* Light cyan border to match the theme */
+    box-shadow: 0 4px 8px rgba(0, 255, 204, 0.3); /* Subtle shadow for depth */
+    object-fit: cover; /* Ensures the image fits well within the circle */
 }
 
 .project-header {
