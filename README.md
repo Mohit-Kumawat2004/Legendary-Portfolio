@@ -64,9 +64,13 @@ From gesture-controlled games to full-stack apps, if it's got logic, pixels, or 
 
 ## 🕸️ Links That Matter
 
-- 🔗 [Portfolio Live](https://your-portfolio-link.com)  
-- 🐙 [GitHub](https://github.com/yourusername)  
-- 💼 [LinkedIn](https://linkedin.com/in/yourprofile)
+- 🔗 [Portfolio Live](https://mohit-kumawat2004.github.io/Legendary-Portfolio/)  
+- 🛠️ [GitHub](https://github.com/Mohit-Kumawat2004)
+- 🏆 [LeetCode](https://leetcode.com/u/Mohit-Kumawat04/)  
+- 💼 [LinkedIn](https://www.linkedin.com/in/mohit-kumawa435ab624bt-/)
+- 🟢 [GeeksforGeeks](https://www.geeksforgeeks.org/user/mohitkumawat04/)  
+- 🔶 [Coding Ninjas](https://www.naukri.com/code360/profile/MohitKumawat)
+- 🌐 [Certifications](https://www.linkedin.com/in/mohit-kumawa435ab624bt-/details/certifications/)  
 
 ---
 
