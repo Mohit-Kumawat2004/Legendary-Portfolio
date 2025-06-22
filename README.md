@@ -2,7 +2,7 @@
 
 > 🚨 *This ain’t just a portfolio. It’s a battlefield of code, caffeine, and chaos.*
 
-![Banner](https://your-killer-banner-link.com)
+![Banner](./assets/Home-Section.png)
 
 ---
 
@@ -41,7 +41,14 @@ From gesture-controlled games to full-stack apps, if it's got logic, pixels, or 
 
 ## 📸 Screenshot Mode: ON
 
-![Demo](https://your-demo-image-link.com)  
+![Demo](./assets/Achievements.png)
+![Demo](./assets/Medals.png)
+![Demo](./assets/Featured-Projects.png)
+![Demo](./assets/Projects-2.png)
+![Demo](./assets/My-Badges.png)
+![Demo](./assets/Touch.png)
+
+
 *UI so clean it looks like it writes its own code.*
 
 ---
