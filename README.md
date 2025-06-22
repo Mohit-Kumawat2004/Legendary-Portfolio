@@ -41,6 +41,8 @@ From gesture-controlled games to full-stack apps, if it's got logic, pixels, or 
 
 ## 📸 Screenshot Mode: ON
 
+![Demo](./assets/Languages.png)
+![Demo](./assets/Certificates-Carousel.png)
 ![Demo](./assets/Achievements.png)
 ![Demo](./assets/Medals.png)
 ![Demo](./assets/Featured-Projects.png)
