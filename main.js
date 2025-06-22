@@ -1,10 +1,33 @@
 // DOM Elements
-const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("nav-menu");
 const navLinks = document.querySelectorAll(".nav-link");
 const backToTopBtn = document.getElementById("back-to-top");
 const contactForm = document.getElementById("contact-form");
 const skillBars = document.querySelectorAll(".skill-progress");
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
+
+  if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      hamburger.classList.toggle("active");
+    });
+
+    // Optional: Close nav menu when a link is clicked (for single-page navigation)
+    document.querySelectorAll(".nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        hamburger.classList.remove("active");
+      });
+    });
+  }
+});
+
+
+
 
 
 window.addEventListener("DOMContentLoaded", function () {
@@ -82,8 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
       currentIndex * cardVisibleWidth
     }px)`;
 
-    // Show/hide arrows
-    leftArrow.style.display = currentIndex > 0 ? "block" : "none";
 
     // Determine if there are more cards to the right than currently visible in the container
     const carouselContainerWidth = carouselTrack.parentElement.clientWidth;
@@ -100,44 +121,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const currentScrollLeft = currentIndex * cardVisibleWidth;
 
       // Give a small buffer (e.g., 5px) for floating point inaccuracies
-      rightArrow.style.display =
-        currentScrollLeft < maxScrollLeft - 5 ? "block" : "none";
     }
   }
 
-  leftArrow.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateCarouselLayout();
-    }
-  });
 
-  rightArrow.addEventListener("click", () => {
-    // Check if there's still content to scroll to the right
-    const carouselContainerWidth = carouselTrack.parentElement.clientWidth;
-    const totalTrackWidth = certificates.length * cardVisibleWidth;
-    const maxScrollableIndex = Math.max(
-      0,
-      Math.floor(
-        (totalTrackWidth - carouselContainerWidth) / cardVisibleWidth
-      ) + 1
-    );
-
-    // Ensure we don't go beyond the last possible scroll position
-    if (
-      currentIndex < certificates.length - 1 &&
-      currentIndex * cardVisibleWidth + carouselContainerWidth <
-        totalTrackWidth + 10
-    ) {
-      // +10 for buffer
-      currentIndex++;
-      updateCarouselLayout();
-    } else if (currentIndex < maxScrollableIndex) {
-      // Fallback for partial visibility
-      currentIndex++;
-      updateCarouselLayout();
-    }
-  });
+  
 
   // Handle window resize to re-calculate card widths and adjust carousel
   window.addEventListener("resize", updateCarouselLayout);

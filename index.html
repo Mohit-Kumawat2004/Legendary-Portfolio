@@ -109,13 +109,7 @@
     }
 }
 
-/* Adjustments for responsiveness if needed - consider how the effects look on small screens */
-@media (max-width: 768px) {
-    .navbar::before {
-        filter: blur(10px); /* Less blur on smaller screens */
-        opacity: 0.25;
-    }
-}
+
     </style>
 </head>
 <body>
@@ -756,19 +750,19 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
                 <div class="contact-form-container">
                     <form class="contact-form" id="contact-form">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required autocomplete="name">
                             <label for="name">Name</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required autocomplete="email">
                             <label for="email">Email</label>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subject" name="subject" required>
+                            <input type="text" id="subject" name="subject" required autocomplete="subject">
                             <label for="subject">Subject</label>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" required autocomplete="off"></textarea>
                             <label for="message">Message</label>
                         </div>
                         <button type="submit" class="btn btn-primary">
@@ -802,27 +796,6 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
     <button class="back-to-top" id="back-to-top">
         <i class="fas fa-chevron-up"></i>
     </button>
-
     <script src="./main.js"></script>
-    <script>
-        // Basic JavaScript for the hamburger menu (if not already in an external main.js)
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
-
-        if (hamburger && navMenu) {
-            hamburger.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                hamburger.classList.toggle('active');
-            });
-
-            // Close nav menu when a link is clicked (for single-page navigation)
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    navMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
-                });
-            });
-        }
-    </script>
 </body>
 </html>

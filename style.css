@@ -88,7 +88,38 @@
     }
 }
 
-
+@media (max-width: 900px) {
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: -100%; /* Hide off-screen by default */
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: #181f2a;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 1.5rem 0;
+        z-index: 100;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        transition: left 0.3s cubic-bezier(0.4,0,0.2,1);
+      }
+    .nav-link {
+      padding: 1rem 0;
+      text-align: center;
+      width: 100%;
+      border-bottom: 1px solid #222c3c;
+    }
+    .nav-menu.active{
+        left:0;
+    }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 101;
+    }
+}
 
 
 
