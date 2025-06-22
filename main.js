@@ -7,7 +7,15 @@ const contactForm = document.getElementById("contact-form");
 const skillBars = document.querySelectorAll(".skill-progress");
 
 
-
+window.addEventListener("DOMContentLoaded", function () {
+  const rocket = document.getElementById("rocket-launch");
+  rocket.style.opacity = "1";
+  rocket.style.animation =
+    "rocket-fly 1.8s cubic-bezier(0.4,1.5,0.6,1) 0.3s 1 forwards";
+  setTimeout(() => {
+    rocket.style.display = "none";
+  }, 2200); // Hide after animation
+});
 
 
 /*Certifications logic JavaScript*/
