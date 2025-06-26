@@ -5,13 +5,14 @@ const navLinks = document.querySelectorAll(".nav-link");
 const backToTopBtn = document.getElementById("back-to-top");
 const contactForm = document.getElementById("contact-form");
 const skillBars = document.querySelectorAll(".skill-progress");
-
-
-
 // Navigation functionality
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navMenu.classList.toggle('active');
+hamburger.addEventListener('click', ()=> {
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
+  document.body.classList.toggle(
+    "menu-open",
+    navMenu.classList.contains("active")
+  );
 });
 
 
@@ -20,6 +21,7 @@ navLinks.forEach(link => {
   link.addEventListener('click', () => {
       hamburger.classList.remove('active');
       navMenu.classList.remove('active');
+      document.body.classList.remove('menu-open');
   });
 });
 
@@ -28,12 +30,30 @@ document.addEventListener('click', (e) => {
   if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
       hamburger.classList.remove('active');
       navMenu.classList.remove('active');
+      document.body.classList.remove('menu-open');
   }
 });
 
+// Active navigation link based on scroll position
+window.addEventListener("scroll", () => {
+  let current = "";
+  const sections = document.querySelectorAll("section");
 
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (scrollY >= sectionTop - 200) {
+      current = section.getAttribute("id");
+    }
+  });
 
-
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
+  });
+});
 
 window.addEventListener("DOMContentLoaded", function () {
   const rocket = document.getElementById("rocket-launch");
@@ -45,8 +65,7 @@ window.addEventListener("DOMContentLoaded", function () {
   }, 2200); // Hide after animation
 });
 
-
-/*Certifications logic JavaScript*/
+// Certifications carousel functionality
 document.addEventListener("DOMContentLoaded", function () {
   const carouselTrack = document.querySelector(
     ".certifications-carousel .carousel-track"
@@ -67,8 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (rightArrow) rightArrow.style.display = "none";
     return;
   }
-
-
 
   const track = document.querySelector(".carousel-track");
   const leftZone = document.querySelector(".carousel-hover-zone.left");
@@ -110,7 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
       currentIndex * cardVisibleWidth
     }px)`;
 
-
     // Determine if there are more cards to the right than currently visible in the container
     const carouselContainerWidth = carouselTrack.parentElement.clientWidth;
     const totalTrackWidth = certificates.length * cardVisibleWidth;
@@ -128,9 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Give a small buffer (e.g., 5px) for floating point inaccuracies
     }
   }
-
-
-  
 
   // Handle window resize to re-calculate card widths and adjust carousel
   window.addEventListener("resize", updateCarouselLayout);
@@ -199,8 +212,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-/*Badges Carousel*/
 document.addEventListener("DOMContentLoaded", function () {
   // Re-use carousel logic for badges by targeting the specific badge elements
   const badgeCarouselTrack = document.querySelector(
@@ -348,27 +359,6 @@ window.addEventListener('orientationchange', () => {
       // Recalculate viewport height
       document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
   }, 100);
-});
-
-// Active navigation link based on scroll position
-window.addEventListener("scroll", () => {
-  let current = "";
-  const sections = document.querySelectorAll("section");
-
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (scrollY >= sectionTop - 200) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach((link) => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active");
-    }
-  });
 });
 
 // Back to top button functionality
@@ -627,6 +617,19 @@ window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
 
+// Parallax effect for hero section (disabled on mobile for performance)
+if (window.innerWidth > 768) {
+  window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.hero-visual');
+      
+      parallaxElements.forEach(element => {
+          const speed = 0.3;
+          element.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+  });
+}
+
 
 // Add hover effects for project cards
 document.querySelectorAll(".project-card").forEach((card) => {
@@ -817,3 +820,17 @@ window.addEventListener('orientationchange', () => {
 
 // Initialize
 handleViewportChange();
+
+// Add a simple loading spinner
+const spinner = document.createElement("div");
+spinner.className = "loading-spinner";
+spinner.innerHTML = `
+    <div class="spinner-circle"></div>
+    <div class="spinner-text">Loading...</div>
+`;
+
+document.body.appendChild(spinner);
+// Show spinner on page load
+window.addEventListener("load", () => {
+  spinner.style.display = "none"; // Hide spinner after loading
+});

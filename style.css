@@ -5,15 +5,12 @@
     box-sizing: border-box;
 }
 
-
 /*Fas Fa LOGOS*/
 .fas, .fa, .fab, .far, .fal, .fad {
     color: var(--accent-orange);
     text-shadow: 0 0 8px purple, 0 0 16px var(--accent-green);
 }
 
-
-/*Circular Barsssss*/
 /* Circular Skill Progress Bar */
 .circle-skill {
     display: flex;
@@ -307,6 +304,7 @@ h2{
 
 
 
+
 /*Badges*/
 .badges {
     padding: 80px 0;
@@ -568,6 +566,7 @@ h2{
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {
@@ -614,9 +613,7 @@ body {
     color: var(--text-primary);
 }
 
-.code-bracket {
-    color: var(--accent-green);
-}
+
 
 .logo-text {
     color: yellow;
@@ -687,6 +684,41 @@ body {
 .hamburger.active .bar:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -6px);
 }
+
+/* Spinner styles */
+.loading-spinner {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.85);
+    z-index: 99999;
+    transition: opacity 0.3s;
+  }
+  
+  .spinner-circle {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #3b82f6;
+    border-top: 5px solid #fff;
+    border-radius: 50%;
+    animation: spinner-rotate 1s linear infinite;
+    margin-bottom: 16px;
+  }
+  
+  .spinner-text {
+    font-size: 1.2rem;
+    color: #3b82f6;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  
+  @keyframes spinner-rotate {
+    100% { transform: rotate(360deg); }
+}
+
 
 /* Hero Section */
 .hero {
@@ -812,24 +844,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Code Window */
-.code-window {
-    position: relative;
-    background: #232b38;
-    border-radius: 14px;
-    padding: 1.2rem 1rem 1rem 1rem;
-    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.12);
-    border: 1.5px solid #222c3a;
-    margin-top: 2rem;   
-}
-
-@media (max-width: 600px) {
-    .code-window {
-      width: 100%;
-      min-width: 0;
-      padding: 1rem 0.5rem 0.5rem 0.5rem;
-    }
-}
 
 
 .window-header {
@@ -885,25 +899,6 @@ body {
     left: 0; right: 0;
     pointer-events: none;
 }
-
-.code-content {
-    font-family: var(--font-mono, 'Fira Code', monospace);
-    color: #bfc9d4;
-    font-size: 0.98rem;
-    line-height: 1.6;
-    white-space: pre-wrap;
-    overflow-x: auto;
-    background: none;
-    border-radius: 0 0 14px 14px;
-    padding: 0;
-}
-.code-comment { color: #6a9955; }
-.code-keyword { color: #569cd6; font-weight: 500; }
-.code-function { color: #dcdcaa; font-weight: 500; }
-.code-string { color: #ce9178; }
-.code-param { color: #9cdcfe; }
-
-
 
 
 
@@ -1648,14 +1643,18 @@ body {
 
     .hamburger {
         display: flex;
+        z-index: 3000;
+        position: fixed; /* So it stays in the top corner */
+        top: 1.2rem;
+        right: 1.2rem;
     }
 
     .nav-menu {
         position: fixed;
-        top: var(--mobile-nav-height);
+        top: 0; left: 0; right: 0; bottom: 0;
         left: -100%;
         width: 100%;
-        height: calc(100vh - var(--mobile-nav-height));
+        height: 100vh;
         background: rgba(15, 23, 42, 0.98);
         backdrop-filter: blur(10px);
         flex-direction: column;
@@ -1664,11 +1663,22 @@ body {
         padding: 2rem 0;
         transition: var(--transition-smooth);
         border-right: 1px solid var(--border-color);
-        overflow: auto;
+        z-index: 3000;
+        overflow-y: auto;
+        opacity: 0;
+        pointer-events: none;
     }
 
     .nav-menu.active {
         left: 0;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+        height: 100vh;
+        touch-action: none;
     }
 
     .nav-link {
@@ -1714,15 +1724,7 @@ body {
     .hero-description {
         font-size: clamp(0.85rem, 4vw, 1rem);
     }
-    
-    .code-window {
-        max-width: 100%;
-    }
-    
-    .code-content {
-        padding: 1rem;
-        font-size: clamp(0.65rem, 3vw, 0.75rem);
-    }
+
     
     .window-title {
         font-size: clamp(0.7rem, 2.5vw, 0.75rem);
@@ -1949,14 +1951,6 @@ body {
     
     .section-title {
         font-size: clamp(1.3rem, 8vw, 1.8rem);
-    }
-}
-
-/* High DPI Displays */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .code-content {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
     }
 }
 
