@@ -6,9 +6,13 @@
 }
 
 /*Fas Fa LOGOS*/
-.fas, .fa, .fab, .far, .fal, .fad {
+.fas, .fa, .fab, .far, .fal, .fad{
     color: var(--accent-orange);
     text-shadow: 0 0 8px purple, 0 0 16px var(--accent-green);
+}
+.fa-brands.fa-telegram {
+    color: var(--accent-orange, orange); /* fallback to orange if variable is not defined */
+    text-shadow: 0 0 8px purple, 0 0 16px lime;
 }
 
 /* Circular Skill Progress Bar */
