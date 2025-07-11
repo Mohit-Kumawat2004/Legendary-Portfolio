@@ -67,149 +67,104 @@ window.addEventListener("DOMContentLoaded", function () {
 
 // Certifications carousel functionality
 document.addEventListener("DOMContentLoaded", function () {
-  const carouselTrack = document.querySelector(
-    ".certifications-carousel .carousel-track"
-  );
-  const leftArrow = document.querySelector(
-    ".certifications-carousel .left-arrow"
-  );
-  const rightArrow = document.querySelector(
-    ".certifications-carousel .right-arrow"
-  );
-  const certificates = Array.from(
-    document.querySelectorAll(".certifications-carousel .certificate-card")
-  );
-
-  if (!carouselTrack || certificates.length === 0) {
-    // If no track or no certificates, hide arrows and exit
-    if (leftArrow) leftArrow.style.display = "none";
-    if (rightArrow) rightArrow.style.display = "none";
-    return;
-  }
-
   const track = document.querySelector(".carousel-track");
-  const leftZone = document.querySelector(".carousel-hover-zone.left");
-  const rightZone = document.querySelector(".carousel-hover-zone.right");
-  let scrollInterval = null;
+  const originalCards = document.querySelectorAll(".certificate-card");
+  const scrollIndicators = document.querySelector(".scroll-indicators");
+  const leftArrow = document.querySelector(".left-arrow");
+  const rightArrow = document.querySelector(".right-arrow");
 
-  function startScroll(direction) {
-    stopScroll();
-    scrollInterval = setInterval(() => {
-      track.scrollLeft += direction * 10; // Adjust speed if needed
-    }, 16); // ~60fps
+  if (!track || originalCards.length === 0) return;
+
+  // Duplicate for seamless scroll
+  track.innerHTML += track.innerHTML;
+  const allCards = track.querySelectorAll(".certificate-card");
+
+  const totalOriginalCards = originalCards.length;
+
+  // Create scroll dots
+  for (let i = 0; i < totalOriginalCards; i++) {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    if (i === 0) dot.classList.add("active");
+    scrollIndicators.appendChild(dot);
   }
-  function stopScroll() {
-    if (scrollInterval) clearInterval(scrollInterval);
-    scrollInterval = null;
+
+  const dots = document.querySelectorAll(".scroll-indicators .dot");
+
+  let scrollAmount = 0;
+  const cardWidth = originalCards[0].offsetWidth + 20; // Include margin
+  const scrollSpeed = 1;
+  const resetAfter = track.scrollWidth / 2;
+
+  function updateIndicators() {
+    const index = Math.floor(scrollAmount / cardWidth) % totalOriginalCards;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
   }
 
-  if (leftZone && rightZone && track) {
-    leftZone.addEventListener("mouseenter", () => startScroll(-1));
-    leftZone.addEventListener("mouseleave", stopScroll);
-    rightZone.addEventListener("mouseenter", () => startScroll(1));
-    rightZone.addEventListener("mouseleave", stopScroll);
-  }
+  function autoScroll() {
+    scrollAmount += scrollSpeed;
 
-  let currentIndex = 0;
-  let cardVisibleWidth = 0; // Actual width of a card including margin
-
-  // Function to calculate visible card width and update carousel
-  function updateCarouselLayout() {
-    if (certificates.length > 0) {
-      const cardStyle = getComputedStyle(certificates[0]);
-      const cardWidth = parseFloat(cardStyle.width);
-      const cardMarginRight = parseFloat(cardStyle.marginRight);
-      cardVisibleWidth = cardWidth + cardMarginRight;
+    if (scrollAmount >= resetAfter) {
+      scrollAmount = 0;
     }
 
-    // Adjust carousel track position
-    carouselTrack.style.transform = `translateX(-${
-      currentIndex * cardVisibleWidth
-    }px)`;
-
-    // Determine if there are more cards to the right than currently visible in the container
-    const carouselContainerWidth = carouselTrack.parentElement.clientWidth;
-    const totalTrackWidth = certificates.length * cardVisibleWidth;
-
-    // Calculate how many cards can fit and if there's overflow
-    if (totalTrackWidth <= carouselContainerWidth) {
-      rightArrow.style.display = "none"; // All cards fit, no need to scroll right
-    } else {
-      // Check if we are at the end of the scrollable content
-      // The scrollable range is totalTrackWidth - carouselContainerWidth
-      // current translation is currentIndex * cardVisibleWidth
-      const maxScrollLeft = totalTrackWidth - carouselContainerWidth;
-      const currentScrollLeft = currentIndex * cardVisibleWidth;
-
-      // Give a small buffer (e.g., 5px) for floating point inaccuracies
-    }
+    track.scrollLeft = scrollAmount;
+    updateIndicators();
+    requestAnimationFrame(autoScroll);
   }
 
-  // Handle window resize to re-calculate card widths and adjust carousel
-  window.addEventListener("resize", updateCarouselLayout);
+  autoScroll();
 
-  // Initial layout update
-  updateCarouselLayout();
+  // Manual scroll with arrows
+  leftArrow?.addEventListener("click", () => {
+    scrollAmount -= cardWidth;
+    if (scrollAmount < 0) scrollAmount = 0;
+    track.scrollLeft = scrollAmount;
+    updateIndicators();
+  });
 
-  // Optional: Add swipe functionality for touch devices
+  rightArrow?.addEventListener("click", () => {
+    scrollAmount += cardWidth;
+    if (scrollAmount >= resetAfter) scrollAmount = 0;
+    track.scrollLeft = scrollAmount;
+    updateIndicators();
+  });
+
+  // Optional touch support
   let touchStartX = null;
   let touchEndX = null;
 
-  carouselTrack.addEventListener(
+  track.addEventListener(
     "touchstart",
     (e) => {
       touchStartX = e.touches[0].clientX;
-      // Stop any ongoing transition to prevent weird behavior
-      carouselTrack.style.transition = "none";
     },
     { passive: true }
-  ); // passive: true for better scrolling performance
+  );
 
-  carouselTrack.addEventListener(
+  track.addEventListener(
     "touchmove",
     (e) => {
       if (touchStartX === null) return;
       touchEndX = e.touches[0].clientX;
-      const currentTranslateX = -currentIndex * cardVisibleWidth;
       const deltaX = touchEndX - touchStartX;
-      carouselTrack.style.transform = `translateX(${
-        currentTranslateX + deltaX
-      }px)`;
+      scrollAmount -= deltaX;
+      track.scrollLeft = scrollAmount;
+      updateIndicators();
+      touchStartX = touchEndX;
     },
     { passive: true }
   );
 
-  carouselTrack.addEventListener("touchend", (e) => {
-    if (touchStartX === null) return;
-
-    carouselTrack.style.transition = "transform 0.5s ease-in-out"; // Restore transition
-
-    const deltaX = touchEndX - touchStartX;
-
-    if (deltaX > 50 && currentIndex > 0) {
-      // Swiped right (show previous card)
-      currentIndex--;
-    } else if (deltaX < -50 && currentIndex < certificates.length - 1) {
-      // Swiped left (show next card)
-      // Check if there's actual content to scroll to on the right
-      const carouselContainerWidth = carouselTrack.parentElement.clientWidth;
-      const totalTrackWidth = certificates.length * cardVisibleWidth;
-      if (
-        currentIndex * cardVisibleWidth + carouselContainerWidth <
-        totalTrackWidth
-      ) {
-        currentIndex++;
-      }
-    }
-
-    updateCarouselLayout();
+  track.addEventListener("touchend", () => {
     touchStartX = null;
     touchEndX = null;
   });
-
-  // Ensure initial arrow visibility is correct based on content
-  updateCarouselLayout();
 });
+
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
