@@ -4,6 +4,70 @@
   padding: 0;
   box-sizing: border-box;
 }
+.achievement-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Minimal CSS for particles background */
+#particles-js {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: #0a0a23;
+}
+.floating-elements {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.floating-element {
+  position: absolute;
+  font-size: 2.5rem;
+  color: #00bfff;
+  opacity: 0.7;
+}
+.magnetic-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+.cursor-dot,
+.cursor-outline {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #00bfff;
+  transition: background 0.2s;
+}
+.cursor-outline {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #00bfff;
+  opacity: 0.5;
+  transition: border-color 0.2s;
+}
+.magnetic-element:hover ~ .magnetic-cursor .cursor-dot,
+.magnetic-element:hover ~ .magnetic-cursor .cursor-outline {
+  background: #fff;
+  border-color: #fff;
+}
 
 /*Fas Fa LOGOS*/
 .fas,
@@ -55,7 +119,7 @@
   position: absolute;
   width: calc(var(--size) - var(--stroke) * 2);
   height: calc(var(--size) - var(--stroke) * 2);
-  background: var(--card-bg);
+  /* background: var(--card-bg); */
   border-radius: 50%;
   top: var(--stroke);
   left: var(--stroke);
@@ -172,6 +236,8 @@
 .breathe-heading {
   display: inline-block; /* Essential for transform to work correctly on inline elements */
   animation: breathe 0.8s ease-in-out infinite alternate; /* Apply the breathing animation */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
 }
 
 h2 {
@@ -242,7 +308,7 @@ h2 {
 
 .certifications {
   padding: 80px 0;
-  background-color: #021128; /* Dark background */
+  /* background-color: #021128; */
   color: #e0e0e0; /* Light text color */
   text-align: center;
 }
@@ -262,7 +328,7 @@ h2 {
 
 .certifications-carousel .carousel-track {
   display: flex;
-  overflow-x: hidden;/*changed*/
+  overflow-x: hidden; /*changed*/
   scroll-behavior: auto; /*changed*/
   gap: 2rem;
   padding: 1rem 0;
@@ -271,7 +337,7 @@ h2 {
 }
 .certifications-carousel .carousel-track::-webkit-scrollbar {
   height: 12px;
-  background: #232f3e;
+  /* background: #232f3e; */
   border-radius: 8px;
 }
 .certifications-carousel {
@@ -283,7 +349,7 @@ h2 {
   width: 300px; /* Fixed width for each card, adjust as needed based on how many you want visible */
   height: 200px; /* Fixed height for landscape cards */
   margin-right: 20px; /* Space between cards */
-  background-color: #1f2937; /* Matching background of other cards */
+  /* background-color: #1f2937; */
   border: 2px solid #00ffe1; /* Neon border */
   border-radius: 8px;
   overflow: hidden; /* Important to clip image if it goes outside, though object-fit should prevent this */
@@ -395,7 +461,7 @@ h2 {
 /*Badges*/
 .badges {
   padding: 80px 0;
-  background-color: #0e1c39; /* Dark background, consistent with other sections */
+  /* background-color: #0e1c39;  */
   color: #e0e0e0; /* Light text color */
   text-align: center;
 }
@@ -432,7 +498,7 @@ h2 {
     192px * 1.1547
   ); /* Height for a perfect hexagon (width * sqrt(3)/2 * 2) */
   margin: 0 10px; /* Horizontal space between badges */
-  background-color: #1f2937; /* Matching background of other cards */
+  /* background-color: #1f2937;  */
   border: 2px solid #00ffe1; /* Neon border */
   box-shadow: none; /* Neon shadow */
   position: relative;
@@ -656,7 +722,7 @@ h2 {
   --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   /* Responsive Variables */
-  --nav-height: 4rem;
+  --nav-height: 3rem;
   --mobile-nav-height: 3.5rem;
 }
 
@@ -667,7 +733,7 @@ html {
 
 body {
   font-family: var(--font-primary);
-  background: var(--primary-bg);
+  /* background: var(--primary-bg); */
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -685,11 +751,14 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(15, 23, 42, 0.95);
+  /* background: rgba(15, 23, 42, 0.95); */
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
   transition: var(--transition-smooth);
+}
+.nav-menu a {
+  font-size: 1.2rem; /* You can increase this further if needed */
 }
 
 .nav-container {
@@ -699,7 +768,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
+  height: 3rem;
+  gap: 1.2rem;
 }
 
 .nav-logo {
@@ -824,11 +894,11 @@ body {
   display: flex;
   align-items: center;
   padding: 4rem 0;
-  background: linear-gradient(
+  /* background: linear-gradient(
     135deg,
     var(--primary-bg) 0%,
     var(--secondary-bg) 100%
-  );
+  ); */
   position: relative;
   overflow: hidden;
 }
@@ -869,6 +939,7 @@ body {
 
 .accent-text {
   color: burlywood;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .hero-subtitle {
@@ -936,7 +1007,7 @@ body {
 }
 
 .btn-primary:hover {
-  background: yellow;
+  background: indianred;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
 }
@@ -1034,7 +1105,7 @@ body {
 /* About Section */
 .about {
   padding: var(--section-padding);
-  background: var(--secondary-bg);
+  /* background: var(--secondary-bg); */
 }
 
 .about-content {
@@ -1075,7 +1146,7 @@ body {
 }
 
 .profile-card {
-  background: var(--card-bg);
+  /* background: var(--card-bg); */
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: 0 0 20px #00ffe1, 0 0 40px #00ffe1; /* Neon glow */
@@ -1112,6 +1183,7 @@ body {
 
 .profile-info {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 0.75rem;
 }
@@ -1141,7 +1213,7 @@ body {
 }
 
 .skill-category {
-  background: var(--card-bg);
+  /* background: var(--card-bg); */
   padding: var(--card-padding);
   border-radius: 1rem;
   border: 2px solid #00ffe1; /* Neon border */
@@ -1218,8 +1290,9 @@ body {
 
 .platform-stats {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between; /* Spread items horizontally */
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .platform-item {
@@ -1241,7 +1314,7 @@ body {
 .platform-icon {
   width: 3rem;
   height: 3rem;
-  background: var(--accent-green);
+  background: darkgoldenrod;
   color: white;
   display: flex;
   align-items: center;
@@ -1269,7 +1342,7 @@ body {
 /* Projects Section */
 .projects {
   padding: var(--section-padding);
-  background: var(--secondary-bg);
+  /* background: var(--secondary-bg); */
 }
 
 .projects-grid {
@@ -1279,7 +1352,7 @@ body {
 }
 
 .project-card {
-  background: var(--card-bg);
+  /* background: var(--card-bg); */
   border-radius: 1rem;
   padding: var(--card-padding);
   border: 2px solid #00ffe1; /* Neon border */
@@ -1329,7 +1402,7 @@ body {
 .abc {
   height: 250px;
   width: 250px; /* Changed to match height for a perfect circle */
-  border-radius: 50%; /* Creates a circular shape */
+  border-radius: 70%; /* Creates a circular shape */
   border: 2px solid #00ffcc; /* Light cyan border to match the theme */
   box-shadow: 0 4px 8px rgba(0, 255, 204, 0.3); /* Subtle shadow for depth */
   object-fit: cover; /* Ensures the image fits well within the circle */
@@ -1418,7 +1491,7 @@ body {
 }
 
 .achievement-card {
-  background: var(--card-bg);
+  /* background: var(--card-bg); */
   padding: 2rem;
   border-radius: 1rem;
   text-align: center;
@@ -1500,7 +1573,7 @@ body {
 /* Contact Section */
 .contact {
   padding: var(--section-padding);
-  background: var(--secondary-bg);
+  /* background: var(--secondary-bg); */
 }
 
 .contact-content {
@@ -1611,7 +1684,7 @@ body {
 /* Footer */
 .footer {
   background: var(--primary-bg);
-  padding: 2rem 0;
+  padding: 1rem 0;
   border-top: 1px solid var(--border-color);
 }
 
@@ -1684,7 +1757,7 @@ body {
 }
 
 .back-to-top:hover {
-  background: #059669;
+  background: red;
   transform: translateY(-3px);
 }
 

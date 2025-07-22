@@ -1,17 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+  .stat-glass {
+    backdrop-filter: blur(12px);
+    background: rgba(0, 0, 50, 0.3);
+    border: 1px solid rgba(0, 200, 255, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .stat-glass:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  }
+
+  .stat-icon {
+    font-size: 2.8rem;
+    margin-bottom: 0.8rem;
+    animation: glow 2s infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 8px #0ff;
+    }
+    to {
+      text-shadow: 0 0 20px #0ff, 0 0 30px #0ff;
+    }
+  }
+</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohit Kumawat - MERN STACK Developer</title>
     <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="Shortcut icon" href="https://www.codester.com/static/favicon.ico" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>    
-
+<body> 
+    <div id="particles-js"></div>
+    <div class="magnetic-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+    </div>
+    <!-- Floating Elements for AI icons -->
+    <div class="floating-elements">
+        <div class="floating-element" style="top: 20%; left: 10%;">
+            <i class="fas fa-brain" style="color: cornsilk"></i>
+        </div>
+        <div class="floating-element" style="top: 60%; right: 15%;">
+            <i class="fas fa-code" style="color: cornsilk"></i>
+        </div>
+        <div class="floating-element" style="bottom: 30%; left: 6%;">
+            <i class="fas fa-robot" style="color: darkorange"></i>
+        </div>
+    </div>
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -56,7 +106,7 @@
                     <div class="hero-buttons">
                         <a href="#projects" class="btn btn-primary">View Projects</a>
                         <a href="#contact" class="btn btn-primary">Contact Me</a>
-                        <a href="https://fuchsia-klarrisa-82.tiiny.site" class="btn btn-primary" target="_blank" rel="noopener">
+                        <a href="https://drive.google.com/file/d/1fawAKGia3T0KI-5b9B1KK_Q62gc1rUmY/view?usp=sharing" class="btn btn-primary" target="_blank" rel="noopener">
                             Resume
                         </a>
                     </div>
@@ -107,7 +157,7 @@
 
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title breathe-heading">About Me</h2>
+            <h2 class="section-title breathe-heading">The Origin</h2>
             <div class="about-content">
                 <div class="about-text">
                     <p>
@@ -123,19 +173,27 @@
 I’ve built projects, participated in hackathons, and love turning ideas into real, working applications — preferably without segmentation faults.
 Also comfortable with problem-solving, data structures & algorithms, and pretending that debugging is a personality trait.
                     </p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">2000+</span>
-                            <span class="stat-label">Problems Solved</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">30+</span>
-                            <span class="stat-label">Contests Participated</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">40+</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
+                    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 3rem;">
+                    <!-- Problems Solved -->
+                    <div class="stat-glass" style="text-align: center; width: 250px;">
+                        <i class="fas fa-code stat-icon" style="color: #00ffff;"></i>
+                        <h2 style="font-size: 2rem; font-weight: bold; color: #00ffff;">2790+</h2>
+                        <p style="color: #ccc;">Problems Solved</p>
+                    </div>
+
+                    <!-- Contests Participated -->
+                    <div class="stat-glass" style="text-align: center; width: 250px;">
+                        <i class="fas fa-trophy stat-icon" style="color: gold;"></i>
+                        <h2 style="font-size: 2rem; font-weight: bold; color: gold;">30+</h2>
+                        <p style="color: #ccc;">Contests Participated</p>
+                    </div>
+
+                    <!-- Projects Completed -->
+                    <div class="stat-glass" style="text-align: center; width: 250px;">
+                        <i class="fas fa-check-circle stat-icon" style="color: lime;"></i>
+                        <h2 style="font-size: 2rem; font-weight: bold; color: lime;">40+</h2>
+                        <p style="color: #ccc;">Projects Completed</p>
+                    </div>
                     </div>
                 </div>
                 <div class="about-image">
@@ -145,7 +203,7 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
                                 <img class="abc" src="Certificates/me.jpeg" alt="">
                             </div>
                             <h3>Mohit Kumawat</h3>
-                            <p>Machine Learning X Competitive Programmer</p>
+                            <p>Machine Learning & Competitive Programming</p>
                         </div>
                         <div class="profile-info">
                             <div class="info-item">
@@ -167,12 +225,12 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
 
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title breathe-heading">Technical Skills</h2>
+            <h2 class="section-title breathe-heading">Dark Arsenal</h2>
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3 class="category-title">
-                        <i class="fas fa-code"></i>
-                        Programming Languages
+                        <i class="fas fa-code" style="color: gold;"></i>
+                        Tech Stack
                     </h3>
                     <div class="circle-skills-grid">
                         <div class="circle-skill">
@@ -217,8 +275,8 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
                 
                 <div class="skill-category">
                     <h3 class="category-title">
-                        <i class="fas fa-project-diagram"></i>
-                        Algorithms & DS
+                        <i class="fas fa-project-diagram" style="color: gold;"></i>
+                        Data Structures & Algorithms
                     </h3>
                     <div class="skills-tags">
                         <span class="skill-tag">Dynamic Programming</span>
@@ -239,7 +297,7 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
                 
                 <div class="skill-category">
                     <h3 class="category-title">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-tools" style="color: gold;"></i>
                         Technologies & Tools
                     </h3>
                     <div class="skills-tags">
@@ -261,7 +319,7 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
 
     <section id="certifications" class="certifications">
         <div class="container">
-            <h2 class="section-title breathe-heading">My Certificates</h2>
+            <h2 class="section-title breathe-heading">Infernal Certificates</h2>
             <div class="certifications-carousel">
                 <div class="carousel-track">
                     <div class="certificate-card">
@@ -341,7 +399,7 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
     <!-- Badges Section -->
     <section id="badges" class="badges">
         <div class="container">
-            <h2 class="section-title breathe-heading">My Badges</h2>
+            <h2 class="section-title breathe-heading">Glory Tokens</h2>
             <div class="badges-carousel">
                 <button class="carousel-arrow left-arrow">
                     <i class="fas fa-chevron-left"></i>
@@ -592,17 +650,17 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
     <section id="achievements" class="achievements">
         <div class="container">
             <h2 class="section-title breathe-heading">Code Wars & Battle Scars</h2>
-                            <div class="skill-category">
+                <div class="skill-category">
                     <h3 class="category-title">
-                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-trophy" style="color: gold;"></i>
                         Platforms
                     </h3>
                     <div class="platform-stats">
-                        <div class="platform-item" onclick="window.location.href='https://www.hackerrank.com/profile/Mohit_Kumawat04';" style="cursor: pointer;">
-                            <div class="platform-icon">HR</div>
+                        <div class="platform-item" onclick="window.location.href='https://ai-for-all.in/#/badge?id=U2FsdGVkX1s1L2a3S4h2gZOfYNTYLiJOtkcKoz9aZs1L2a3S4h4QrCA0eDn5lLhbEszWYU8nCKYzSpF6';" style="cursor: pointer;">
+                            <div class="platform-icon">AI</div>
                             <div class="platform-info">
-                                <span class="platform-name">HackerRank</span>
-                                <span class="platform-rating">Hackos: 15000+</span>
+                                <span class="platform-name">AI Appreciate</span>
+                                <span class="platform-rating">Badge 2025</span>
                             </div>
                         </div>
                         <div class="platform-item" onclick="window.location.href='https://leetcode.com/u/Mohit-Kumawat04/';" style="cursor: pointer;">
@@ -612,6 +670,13 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
                                 <span class="platform-rating">1500+ Rating</span>
                             </div>
                         </div>
+                        <div class="platform-item" onclick="window.location.href='https://credential.certifyme.online/verify/8cbce11b24808';" style="cursor: pointer;">
+                            <div class="platform-icon">XB</div>
+                            <div class="platform-info">
+                                <span class="platform-name">Xebia Badge</span>
+                                <span class="platform-rating">Specialization</span>
+                            </div>
+                        </div>
                         <div class="platform-item" onclick="window.location.href='https://www.naukri.com/code360/profile/MohitKumawat04';" style="cursor: pointer;">
                             <div class="platform-icon">CN</div>
                             <div class="platform-info">
@@ -619,37 +684,50 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
                                 <span class="platform-rating">2X Topper</span>
                             </div>
                         </div>
+                        <div class="platform-item" onclick="window.location.href='https://codolio.com/profile/Mohit-K2004/card';" style="cursor: pointer;">
+                            <div class="platform-icon">CD</div>
+                            <div class="platform-info">
+                                <span class="platform-name">Codolio Card</span>
+                                <span class="platform-rating">Portfolio</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 <br>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3>500 Days Streak</h3>
-                    <p>LeetCode</p>
-                    <span class="achievement-date">March 2025</span>
+    <div class="achievements-grid">
+        <a href="https://leetcode.com/u/Mohit-Kumawat04/" target="_blank" class="achievement-link">
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-fire"></i>
                 </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>Technical Content Writer</h3>
-                    <p>GeeksForGeeks</p>
-                    <span class="achievement-date">June 2025</span>
+                <h3>400+ Days Streak</h3>
+                <p>LeetCode</p>
+                <span class="achievement-date">March 2025</span>
+            </div>
+        </a>
+        
+        <a href="https://media.geeksforgeeks.org/badges_dir/24f28426e51a6addea93b0c30d1a5b76801c09e5f11d0e6f66f879722cac2024.png" target="_blank" class="achievement-link">
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-star"></i>
                 </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3>HackerRank Star</h3>
-                    <p>Achieved 5-Star Rating</p>
-                    <span class="achievement-date">January 2024</span>
+                <h3>Technical Content Writer</h3>
+                <p>GeeksForGeeks</p>
+                <span class="achievement-date">June 2025</span>
+            </div>
+        </a>
+        
+        <a href="https://www.hackerrank.com/profile/Mohit_Kumawat04" target="_blank" class="achievement-link">
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <i class="fas fa-crown"></i>
                 </div>
-        </div>
+                <h3>HackerRank Star</h3>
+                <p>Achieved 5-Star Rating</p>
+                <span class="achievement-date">January 2024</span>
+            </div>
+        </a>
+    </div>
     </section>
 
     <section id="contact" class="contact">
@@ -717,13 +795,15 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
         <div class="container">
             <div class="footer-content">
                 <div class="footer-text">
-                    <p>&copy; Mohit Kumawat — Built with <i class="fas fa-code"></i>, <i class="fas fa-coffee"></i>, and a hint of madness 💻🔥</p>
-                    <p>Inspired by the beauty of code and the thrill of problem-solving. Let's connect and create something amazing together!</p>
+                    <p>&copy; Mohit Kumawat — Built with <i class="fas fa-code"></i>, <i class="fas fa-graduation-cap"></i>, and Chilling traces of lunacy <i class="fas fa-skull"></i> <i class="fas fa-skull-crossbones"></i></p>
+                    <p>Haunted by the whispers of broken code and the eerie thrill of unsolved problems. Dare to connect…!</p>
                 </div>
                 <div class="footer-social">
                     <a href="https://github.com/Mohit-Kumawat2004" class="social-link"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/mohit-kumawa435ab624bt-/" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://leetcode.com/u/Mohit-Kumawat04/" class="social-link"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="https://www.youtube.com/@obsidianytology7018" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/kumawat_ji020?igsh=ajNja3c3MTR4eXRn" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:unofficialkumawatmohit7678@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
@@ -732,5 +812,31 @@ Also comfortable with problem-solving, data structures & algorithms, and pretend
         <i class="fas fa-chevron-up"></i>
     </button>
     <script src="./main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="./script.js"></script>
+    <script>
+  function openEmailClient(event) {
+    event.preventDefault();
+
+    const form = document.getElementById("contact-form");
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const subject = form.subject.value.trim();
+    const message = form.message.value.trim();
+
+    if (!name || !email || !subject || !message) {
+      alert("Please fill in all fields");
+      return false;
+    }
+
+    const mailtoLink = `mailto:unofficialkumawatmohit7678@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+      `Hi, I'm ${name} (${email}):\n\n${message}`
+    )}`;
+
+    // Open email client
+    window.location.href = mailtoLink;
+    return false;
+  }
+</script>
 </body>
 </html>

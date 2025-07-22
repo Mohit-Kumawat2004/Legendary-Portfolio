@@ -15,7 +15,6 @@ hamburger.addEventListener('click', ()=> {
   );
 });
 
-
 // Close mobile menu when clicking on a link
 navLinks.forEach(link => {
   link.addEventListener('click', () => {
