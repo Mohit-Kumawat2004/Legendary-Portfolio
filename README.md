@@ -1,8 +1,9 @@
 # ⚔️ Mohit Kumawat — Digital Warrior
 
-> 🚨 *This ain’t just a portfolio. It’s a battlefield of code, caffeine, and chaos.*
+> 🚨 *This isn’t a portfolio. It’s a digital graveyard of code, chaos, and liquid insomnia.*
+*Scripts bleed. Logic screams. The brew never runs dry*
 
-![Banner](./assets/Home-Section.png)
+![Banner](./assets/Tech-Home.png)
 
 ---
 
@@ -41,14 +42,14 @@ From gesture-controlled games to full-stack apps, if it's got logic, pixels, or 
 
 ## 📸 Screenshot Mode: ON
 
-![Demo](./assets/Languages.png)
-![Demo](./assets/Certificates-Carousel.png)
-![Demo](./assets/Achievements.png)
-![Demo](./assets/Medals.png)
-![Demo](./assets/Featured-Projects.png)
-![Demo](./assets/Projects-2.png)
-![Demo](./assets/My-Badges.png)
-![Demo](./assets/Touch.png)
+![Demo](./assets/Tech-About-Me.png)
+![Demo](./assets/Tech-Projects.png)
+![Demo](./assets/Tech-Projects-2.png)
+![Demo](./assets/Technical-Skills.png)
+![Demo](./assets/Tech-Wars.png)
+![Demo](./assets/Tech-Certificates.png)
+![Demo](./assets/Tech-Badges.png)
+
 
 
 *UI so clean it looks like it writes its own code.*
@@ -58,7 +59,7 @@ From gesture-controlled games to full-stack apps, if it's got logic, pixels, or 
 ## 🧾 Real Talk
 
 > “While you debug errors… I debug reality.”  
-> – Probably me, while sipping coffee at 3AM
+> – Probably me, mid-ritual in front of a glowing screen at 3AM
 
 ---
 

@@ -775,16 +775,20 @@ window.addEventListener('orientationchange', () => {
 // Initialize
 handleViewportChange();
 
-// Add a simple loading spinner
+// Create a badass neon spinner
 const spinner = document.createElement("div");
 spinner.className = "loading-spinner";
 spinner.innerHTML = `
-    <div class="spinner-circle"></div>
-    <div class="spinner-text">Loading...</div>
+  <div class="progress-bar"><div class="progress-fill"></div></div>
+  <div class="spinner-text">Loading Portfolio...</div>
 `;
 
 document.body.appendChild(spinner);
-// Show spinner on page load
+// Wait 4.5 seconds, then fade out
 window.addEventListener("load", () => {
-  spinner.style.display = "none"; // Hide spinner after loading
+  setTimeout(() => {
+    spinner.style.opacity = "0";
+    spinner.style.pointerEvents = "none";
+    setTimeout(() => spinner.remove(), 600); // Allow fade to finish
+  }, 3500);
 });
