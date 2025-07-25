@@ -10,6 +10,11 @@
   text-decoration: none;
   color: inherit;
 }
+.nav-spacer {
+  width: 800px;
+  min-width: 400px;
+  background: inherit; /* match nav background */
+}
 
 /* Minimal CSS for particles background */
 #particles-js {
@@ -96,11 +101,10 @@
   align-items: center;
   margin-bottom: 2rem;
 }
-
 .circle-progress {
   --size: 90px;
   --stroke: 10px;
-  --percentage: 75; /* Default, override inline */
+  --percentage: 75;
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
@@ -108,12 +112,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   background: conic-gradient(
-    var(--accent-orange) calc(var(--percentage) * 1%),
-    var(--accent-orange) calc(var(--percentage) * 1%),
+    #ff6a00 calc(var(--percentage) * 1%),
+    #a64ac9 calc(var(--percentage) * 1%),
     #232f3e 0
   );
-  box-shadow: 0 0 12px #00ffe1, 0 0 24px #00ffe1;
+
+  box-shadow: 0 0 12px #ff6a00, 0 0 24px #a64ac9;
 }
 
 .circle-progress::before {
@@ -238,7 +244,7 @@
 .breathe-heading {
   display: inline-block; /* Essential for transform to work correctly on inline elements */
   animation: breathe 0.8s ease-in-out infinite alternate; /* Apply the breathing animation */
-  font-family: 'Orbitron', sans-serif; 
+  font-family: "Orbitron", sans-serif;
   font-weight: 700;
 }
 
@@ -446,10 +452,22 @@ h2 {
   }
 }
 /* Responsive adjustments for number of visible cards */
-@media (min-width: 768px) {
+@media (min-width: 10px) {
   .certificate-card {
     width: 350px; /* Larger cards on wider screens */
     height: 230px;
+  }
+  .nav-container {
+    justify-content: space-between; /* Ensures left & right split */
+    gap: 6rem;
+  }
+
+  .nav-logo {
+    margin-right: auto; /* Pushes the logo to far left */
+  }
+
+  .nav-menu {
+    margin-left: auto; /* Pushes the menu to far right */
   }
 }
 
@@ -755,8 +773,6 @@ body {
   overflow-x: hidden;
 }
 
-
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -769,7 +785,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  /* background: rgba(15, 23, 42, 0.95); */
+  background: #0a0a23;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
@@ -800,21 +816,23 @@ body {
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   height: 3rem;
-  gap: 1.2rem;
+  gap: 0;
 }
 
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 8px;                 /* Space between icons and text */
-  font-size: 1.2rem;        /* Slightly smaller */
+  gap: 8px; /* Space between icons and text */
+  font-size: 1.2rem; /* Slightly smaller */
   font-weight: 700;
   font-family: var(--font-mono);
   color: var(--text-primary);
   min-width: 0;
+  margin-right: 3rem;
+  white-space: nowrap;
 }
 
 .logo-text {
@@ -826,10 +844,10 @@ body {
 .nav-menu {
   display: flex;
   /* gap: clamp(1rem, 3vw, 2rem); */
-  gap: clamp(0.7rem, 2vw, 1.2rem); 
+  gap: clamp(0.7rem, 2.5vw, 1.2rem);
   color: slateblue;
   align-items: center;
-  margin-left: auto;  
+  margin-left: 0;
 }
 
 .nav-link {
@@ -844,12 +862,18 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-  color: yellow;
+  color: #00ffe1 !important;
   outline: none;
   background: none;
   box-shadow: none;
 }
-
+.nav-link:focus,
+.nav-link:active {
+  background: none !important;
+  color: #00ffe1 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
 .nav-link::after {
   content: "";
   position: absolute;
@@ -857,7 +881,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--accent-green);
+  background: fuchsia;
   transition: var(--transition-smooth);
 }
 
@@ -904,7 +928,7 @@ body {
   justify-content: center;
   background: #000;
   z-index: 99999;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   overflow: hidden;
 }
 
@@ -934,10 +958,13 @@ body {
 }
 
 @keyframes fillBar {
-  0%   { width: 0%; }
-  100% { width: 100%; }
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
-
 
 /* Hero Section */
 .hero {
@@ -990,7 +1017,7 @@ body {
 
 .accent-text {
   color: burlywood;
-  font-family: 'Orbitron', sans-serif; 
+  font-family: "Orbitron", sans-serif;
 }
 
 .hero-subtitle {
@@ -1149,7 +1176,7 @@ body {
   transform: translateX(-50%);
   width: 4rem;
   height: 4px;
-  background: linear-gradient(90deg, var(--accent-green), var(--accent-orange));
+  background: #00ffe1;
   border-radius: 2px;
 }
 
@@ -1252,135 +1279,134 @@ body {
   width: 1rem;
 }
 
-
 /* Education Section */
 .edu-container {
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-    /* Increased gap */
-    max-width: 900px;
-    width: 100%;
-    align-items: center;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  /* Increased gap */
+  max-width: 900px;
+  width: 100%;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .edu-box {
-    /* background: rgba(10, 147, 227, 0.95); */
-    width: 120%;
-    /* More opaque */
-    backdrop-filter: blur(15px);
-    /* Stronger blur */
-    padding: 35px;
-    /* More padding */
-    border-left: 5px solid var(--primary);
-    border-right: 5px solid var(--primary);
-    /* Thicker border */
-    border-radius: 20px;
-    /* More rounded */
-    box-shadow: 0 8px 25px var(--shadow);
-    /* Enhanced shadow */
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-    text-align: left;
-    transform-style: preserve-3d;
-    /* For 3D flip effect */
-    will-change: transform, box-shadow, border-color;
-    /* Optimize for animation */
+  /* background: rgba(10, 147, 227, 0.95); */
+  width: 120%;
+  /* More opaque */
+  backdrop-filter: blur(15px);
+  /* Stronger blur */
+  padding: 35px;
+  /* More padding */
+  border-left: 5px solid var(--primary);
+  border-right: 5px solid var(--primary);
+  /* Thicker border */
+  border-radius: 20px;
+  /* More rounded */
+  box-shadow: 0 8px 25px var(--shadow);
+  /* Enhanced shadow */
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  transform-style: preserve-3d;
+  /* For 3D flip effect */
+  will-change: transform, box-shadow, border-color;
+  /* Optimize for animation */
 }
 
 /* New Hover Effect for Education Box - 3D Flip & Gradient Overlay */
 .edu-box::before,
 .edu-box::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: var(--transition-slow);
-    border-radius: 20px;
-    z-index: 0;
-    /* Ensures content stays on top */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: var(--transition-slow);
+  border-radius: 20px;
+  z-index: 0;
+  /* Ensures content stays on top */
 }
 
 .edu-box::before {
-    background: linear-gradient(120deg, var(--accent-green), var(--accent-blue), var(--accent-orange));
-    opacity: 0;
-    transform: translateY(100%);
-    /* Starts off-screen at the bottom */
+  background: linear-gradient(
+    120deg,
+    var(--accent-green),
+    var(--accent-blue),
+    var(--accent-orange)
+  );
+  opacity: 0;
+  transform: translateY(100%);
+  /* Starts off-screen at the bottom */
 }
 
 .edu-box::after {
-    background: rgba(255, 255, 255, 0.1);
-    /* Subtle inner overlay */
-    opacity: 0;
+  background: rgba(255, 255, 255, 0.1);
+  /* Subtle inner overlay */
+  opacity: 0;
 }
 
 .edu-box:hover::before {
-    opacity: 1;
-    transform: translateY(0%);
-    /* Slides up */
+  opacity: 1;
+  transform: translateY(0%);
+  /* Slides up */
 }
 
 .edu-box:hover::after {
-    opacity: 1;
-    /* Fades in */
+  opacity: 1;
+  /* Fades in */
 }
 
 .edu-box:hover {
-    box-shadow: 0 20px 45px var(--shadow-dark);
-    transform: translateY(-10px) scale(1.02);
-    box-shadow:
-        0 0 15px #00ffe1,
-        0 0 30px #00ffe1,
-        0 0 60px #00ffe1;
-    border-left-color: #ffffff; 
-    /* Stronger shadow on hover */
-    border-left-color: var(--accent);
-    /* Accent color on hover */
-    transform: translateY(-10px) rotateX(5deg) scale(1.01);
-    /* Lift, slight X-axis rotation, slight scale */
-    color: var(--text-light);
-    /* Change text color for better contrast on gradient */
+  box-shadow: 0 20px 45px var(--shadow-dark);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 15px #00ffe1, 0 0 30px #00ffe1, 0 0 60px #00ffe1;
+  border-left-color: #ffffff;
+  /* Stronger shadow on hover */
+  border-left-color: var(--accent);
+  /* Accent color on hover */
+  transform: translateY(-10px) rotateX(5deg) scale(1.01);
+  /* Lift, slight X-axis rotation, slight scale */
+  color: var(--text-light);
+  /* Change text color for better contrast on gradient */
 }
 
 /* Adjust inner text colors for contrast when hovered */
 .edu-box:hover h3,
 .edu-box:hover p {
-    color: var(--text-light);
-    text-align: left;
-    /* Ensure text is visible on gradient */
+  color: var(--text-light);
+  text-align: left;
+  /* Ensure text is visible on gradient */
 }
 
-
 .edu-box h3 {
-    font-size: 1.5rem;
-    /* Larger heading */
-    margin-bottom: 12px;
-    color: white;
-    font-family: 'Lora', serif;
-    /* Lora for sub-headings */
-    position: relative;
-    z-index: 1;
-    text-align: left;
-    transition: color var(--transition);
-    /* Transition color change */
+  font-size: 1.5rem;
+  /* Larger heading */
+  margin-bottom: 12px;
+  color: white;
+  font-family: "Lora", serif;
+  /* Lora for sub-headings */
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  transition: color var(--transition);
+  /* Transition color change */
 }
 
 .edu-box p {
-    color: white;
-    font-size: 1.1rem;
-    /* Slightly larger paragraph */
-    position: relative;
-    z-index: 1;
-    margin-left: -5px;
-    text-align: left;
-    transition: color var(--transition);
-    /* Transition color change */
+  color: white;
+  font-size: 1.1rem;
+  /* Slightly larger paragraph */
+  position: relative;
+  z-index: 1;
+  margin-left: -5px;
+  text-align: left;
+  transition: color var(--transition);
+  /* Transition color change */
 }
-
 
 /* Skills Section */
 .skills {
@@ -1415,11 +1441,10 @@ body {
   margin-bottom: 1.5rem;
   color: var(--text-primary);
   font-size: 1.25rem;
-  font-family: 'Orbitron', sans-serif; /* same as achievement cards */
+  font-family: "Orbitron", sans-serif; /* same as achievement cards */
   letter-spacing: 1px;
   text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; /* neon glow effect */
 }
-
 
 .category-title i {
   color: var(--accent-green);
@@ -1454,23 +1479,32 @@ body {
 .skills-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .skill-tag {
-  background: var(--primary-bg);
-  color: var(--text-secondary);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.875rem;
-  border: 1px solid var(--border-color);
-  transition: var(--transition-smooth);
+  background: linear-gradient(to right, #ff6a00, #a64ac9);
+  color: black;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 255, 247, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.skill-tag i {
+  color: black;
 }
 
 .skill-tag:hover {
-  background: olivedrab;
-  color: white;
-  transform: scale(1.05);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 255, 247, 0.7);
 }
 
 .platform-stats {
@@ -1677,7 +1711,7 @@ body {
 
 .achievement-card {
   /* background: var(--card-bg); */
-  font-family: 'Orbitron', sans-serif; /* futuristic neon-style font */
+  font-family: "Orbitron", sans-serif; /* futuristic neon-style font */
   color: #ffffff; /* bright text color */
   padding: 2rem;
   border-radius: 1rem;
@@ -1746,12 +1780,14 @@ body {
 .achievement-icon {
   width: 4rem;
   height: 4rem;
-  background: rgba(0, 255, 255, 0.1); /* subtle neon-style translucent background */
+  background: rgba(
+    0,
+    255,
+    255,
+    0.1
+  ); /* subtle neon-style translucent background */
   border: 2px solid #00ffff; /* glowing neon border */
-  box-shadow:
-    0 0 10px #00ffff,
-    0 0 20px #00ffff,
-    0 0 30px #00ffff;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
   color: #00ffff; /* neon cyan for icon */
   display: flex;
   align-items: center;
@@ -1793,7 +1829,7 @@ body {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: var(--text-primary);
-  font-family: 'Orbitron', sans-serif; 
+  font-family: "Orbitron", sans-serif;
 }
 
 .contact-info p {
@@ -1802,28 +1838,14 @@ body {
   line-height: 1.7;
 }
 
-.contact-methods {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-method {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: var(--text-secondary);
-  transition: var(--transition-smooth);
-}
-
 .contact-method:hover {
-  color: var(--accent-green);
+  color: red;
   transform: translateX(5px);
 }
 
 .contact-method i {
   width: 1.5rem;
-  color: gold
+  color: gold;
 }
 
 .contact-form-container {
@@ -1858,7 +1880,7 @@ body {
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--accent-green);
+  border-color: cyan;
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 }
 
@@ -1880,7 +1902,7 @@ body {
   top: -0.5rem;
   left: 0.75rem;
   font-size: 0.875rem;
-  color: var(--accent-green);
+  color: cyan;
 }
 
 .contact-form .btn {
@@ -1908,7 +1930,7 @@ body {
 }
 
 .footer-text i {
-  color: var(--accent-orange);
+  color: cyan;
 }
 
 .footer-social {
@@ -1931,7 +1953,7 @@ body {
 }
 
 .social-link:hover {
-  background: var(--accent-green);
+  background: red;
   color: white;
   transform: translateY(-3px);
 }
@@ -2064,6 +2086,20 @@ body {
     top: 1.2rem;
     right: 1.2rem;
   }
+  .edu-container {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.edu-box {
+  width: 100%;
+  max-width: 95%;
+  text-align: left;
+  padding: 1.25rem;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+  border-left: 4px solid var(--accent-neon, cyan); /* optional glowing border */
+}
 
   .nav-menu {
     position: fixed;
@@ -2199,6 +2235,9 @@ body {
     max-width: 250px;
     justify-content: center;
   }
+  .nav-link[href="#education"] {
+    margin: 1rem 0;
+  }
 }
 
 /* Mobile Medium */
@@ -2309,6 +2348,18 @@ body {
     font-size: clamp(1.5rem, 7vw, 2rem);
     margin-bottom: 2rem;
   }
+  .edu-box {
+    padding: 25px;
+    border-left-width: 4px;
+  }
+
+  .edu-box h3 {
+    font-size: 1.3rem;
+  }
+
+  .edu-box p {
+    font-size: 1rem;
+  }
 }
 
 /* Mobile Small */
@@ -2317,7 +2368,6 @@ body {
     --section-padding: 2rem 0;
     --container-padding: 0 0.5rem;
   }
-
   .nav-container {
     padding: 0 0.5rem;
   }
@@ -2392,6 +2442,49 @@ body {
     margin-bottom: 2rem;
   }
 }
+
+@media (max-width: 480px) {
+  .edu-box {
+    padding: 1rem;
+    max-width: 94%;
+  }
+
+  .edu-box h3 {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .edu-box p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .edu-container {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .edu-box {
+    padding: 0.85rem;
+    max-width: 92%;
+  }
+
+  .edu-box h3 {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .edu-box p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .edu-container {
+    gap: 1rem;
+  }
+}
+
 
 /* Print Styles */
 @media print {
@@ -2520,16 +2613,14 @@ body {
     max-width: 1800px;
   }
 }
-
-/* --- Wavy Navbar Effect (works on all devices) --- */
+/* 
 .navbar {
   position: relative;
   z-index: 10;
-  /* Do NOT use overflow: hidden here! */
-}
+} */
 
 /* Wavy conic-gradient background */
-.navbar::before {
+/* .navbar::before {
   content: "";
   position: absolute;
   top: -200%;
@@ -2569,9 +2660,8 @@ body {
   pointer-events: none;
 }
 
-/* Shimmer effect */
 .navbar::after {
-  content: "";
+  content: "";       
   position: absolute;
   top: 0;
   left: 0;
@@ -2592,7 +2682,7 @@ body {
     shimmerEffectReverse 3.5s linear infinite;
   z-index: 0;
   pointer-events: none;
-}
+} */
 
 /* Nav link glow */
 .nav-link {
@@ -2697,24 +2787,50 @@ body {
   animation: glitchBottom 1s infinite;
 }
 @keyframes glitch {
-  0% { transform: none; }
-  20% { transform: skew(-0.5deg, -0.9deg); }
-  40% { transform: skew(0.5deg, 0.4deg); }
-  60% { transform: skew(-1deg, 0deg); }
-  80% { transform: skew(0.5deg, -0.3deg); }
-  100% { transform: none; }
+  0% {
+    transform: none;
+  }
+  20% {
+    transform: skew(-0.5deg, -0.9deg);
+  }
+  40% {
+    transform: skew(0.5deg, 0.4deg);
+  }
+  60% {
+    transform: skew(-1deg, 0deg);
+  }
+  80% {
+    transform: skew(0.5deg, -0.3deg);
+  }
+  100% {
+    transform: none;
+  }
 }
 
 @keyframes glitchTop {
-  0% { clip-path: inset(0 0 85% 0); }
-  50% { clip-path: inset(15% 0 65% 0); transform: translate(-2px, -1px); }
-  100% { clip-path: inset(0 0 85% 0); }
+  0% {
+    clip-path: inset(0 0 85% 0);
+  }
+  50% {
+    clip-path: inset(15% 0 65% 0);
+    transform: translate(-2px, -1px);
+  }
+  100% {
+    clip-path: inset(0 0 85% 0);
+  }
 }
 
 @keyframes glitchBottom {
-  0% { clip-path: inset(85% 0 0 0); }
-  50% { clip-path: inset(45% 0 45% 0); transform: translate(2px, 1px); }
-  100% { clip-path: inset(85% 0 0 0); }
+  0% {
+    clip-path: inset(85% 0 0 0);
+  }
+  50% {
+    clip-path: inset(45% 0 45% 0);
+    transform: translate(2px, 1px);
+  }
+  100% {
+    clip-path: inset(85% 0 0 0);
+  }
 }
 /* Neon Glow Scrollbar */
 ::-webkit-scrollbar {
