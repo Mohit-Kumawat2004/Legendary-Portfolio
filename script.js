@@ -58,3 +58,11 @@ magneticElements.forEach((el) => {
     el.style.transform = "";
   });
 });
+
+window.addEventListener("scroll", () => {
+  const scrollProgress = document.getElementById("scroll-progress");
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrolled = (scrollTop / docHeight) * 100;
+  scrollProgress.style.width = scrolled + "%";
+});

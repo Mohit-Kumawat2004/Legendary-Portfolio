@@ -3,7 +3,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
+
 .achievement-link {
   text-decoration: none;
   color: inherit;
@@ -705,6 +707,20 @@ h2 {
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
   --border-color: #475569;
+  --primary: #0a28c0;
+  --secondary: #d19a52;
+  --accent: #ff6b35;
+  --dark: #2b2b2b;
+  --light: #f5f5f5;
+  --text: #333;
+  --text-light: #f5f5f5;
+  --border: #d2b48c;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  --gradient-hover: linear-gradient(135deg, var(--secondary), var(--accent));
 
   /* Typography */
   --font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -739,6 +755,8 @@ body {
   overflow-x: hidden;
 }
 
+
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -756,9 +774,25 @@ body {
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
   transition: var(--transition-smooth);
+  height: 3.9rem;
 }
 .nav-menu a {
   font-size: 1.2rem; /* You can increase this further if needed */
+}
+
+/* Neon Scroll Progress Bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  z-index: 2000; /* Above navbar */
+  background: linear-gradient(90deg, #00ffe1, #3b82f6, #ff00aa);
+  box-shadow: 0 0 12px #00ffe1, 0 0 24px #ff00aa;
+  border-radius: 0 0 8px 8px;
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .nav-container {
@@ -773,21 +807,29 @@ body {
 }
 
 .nav-logo {
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;                 /* Space between icons and text */
+  font-size: 1.2rem;        /* Slightly smaller */
   font-weight: 700;
   font-family: var(--font-mono);
   color: var(--text-primary);
+  min-width: 0;
 }
 
 .logo-text {
   color: yellow;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 .nav-menu {
   display: flex;
-  gap: clamp(1rem, 3vw, 2rem);
+  /* gap: clamp(1rem, 3vw, 2rem); */
+  gap: clamp(0.7rem, 2vw, 1.2rem); 
   color: slateblue;
   align-items: center;
+  margin-left: auto;  
 }
 
 .nav-link {
@@ -803,6 +845,9 @@ body {
 .nav-link:hover,
 .nav-link.active {
   color: yellow;
+  outline: none;
+  background: none;
+  box-shadow: none;
 }
 
 .nav-link::after {
@@ -1206,6 +1251,136 @@ body {
   color: var(--accent-orange);
   width: 1rem;
 }
+
+
+/* Education Section */
+.edu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    /* Increased gap */
+    max-width: 900px;
+    width: 100%;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.edu-box {
+    /* background: rgba(10, 147, 227, 0.95); */
+    width: 120%;
+    /* More opaque */
+    backdrop-filter: blur(15px);
+    /* Stronger blur */
+    padding: 35px;
+    /* More padding */
+    border-left: 5px solid var(--primary);
+    border-right: 5px solid var(--primary);
+    /* Thicker border */
+    border-radius: 20px;
+    /* More rounded */
+    box-shadow: 0 8px 25px var(--shadow);
+    /* Enhanced shadow */
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    transform-style: preserve-3d;
+    /* For 3D flip effect */
+    will-change: transform, box-shadow, border-color;
+    /* Optimize for animation */
+}
+
+/* New Hover Effect for Education Box - 3D Flip & Gradient Overlay */
+.edu-box::before,
+.edu-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: var(--transition-slow);
+    border-radius: 20px;
+    z-index: 0;
+    /* Ensures content stays on top */
+}
+
+.edu-box::before {
+    background: linear-gradient(120deg, var(--accent-green), var(--accent-blue), var(--accent-orange));
+    opacity: 0;
+    transform: translateY(100%);
+    /* Starts off-screen at the bottom */
+}
+
+.edu-box::after {
+    background: rgba(255, 255, 255, 0.1);
+    /* Subtle inner overlay */
+    opacity: 0;
+}
+
+.edu-box:hover::before {
+    opacity: 1;
+    transform: translateY(0%);
+    /* Slides up */
+}
+
+.edu-box:hover::after {
+    opacity: 1;
+    /* Fades in */
+}
+
+.edu-box:hover {
+    box-shadow: 0 20px 45px var(--shadow-dark);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+        0 0 15px #00ffe1,
+        0 0 30px #00ffe1,
+        0 0 60px #00ffe1;
+    border-left-color: #ffffff; 
+    /* Stronger shadow on hover */
+    border-left-color: var(--accent);
+    /* Accent color on hover */
+    transform: translateY(-10px) rotateX(5deg) scale(1.01);
+    /* Lift, slight X-axis rotation, slight scale */
+    color: var(--text-light);
+    /* Change text color for better contrast on gradient */
+}
+
+/* Adjust inner text colors for contrast when hovered */
+.edu-box:hover h3,
+.edu-box:hover p {
+    color: var(--text-light);
+    text-align: left;
+    /* Ensure text is visible on gradient */
+}
+
+
+.edu-box h3 {
+    font-size: 1.5rem;
+    /* Larger heading */
+    margin-bottom: 12px;
+    color: white;
+    font-family: 'Lora', serif;
+    /* Lora for sub-headings */
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    transition: color var(--transition);
+    /* Transition color change */
+}
+
+.edu-box p {
+    color: white;
+    font-size: 1.1rem;
+    /* Slightly larger paragraph */
+    position: relative;
+    z-index: 1;
+    margin-left: -5px;
+    text-align: left;
+    transition: color var(--transition);
+    /* Transition color change */
+}
+
 
 /* Skills Section */
 .skills {
@@ -2540,4 +2715,28 @@ body {
   0% { clip-path: inset(85% 0 0 0); }
   50% { clip-path: inset(45% 0 45% 0); transform: translate(2px, 1px); }
   100% { clip-path: inset(85% 0 0 0); }
+}
+/* Neon Glow Scrollbar */
+::-webkit-scrollbar {
+  width: 30px;
+  background: #232f3e;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #00ffe1 40%, #3b82f6 80%);
+  border-radius: 8px;
+  box-shadow: 0 0 12px 4px #00ffe1, 0 0 24px 8px #3b82f6;
+  border: 2px solid #232f3e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #00ffe1, #ff00aa);
+  box-shadow: 0 0 24px 8px #00ffe1, 0 0 32px 12px #ff00aa;
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #00ffe1 #232f3e;
 }
