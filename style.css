@@ -336,8 +336,8 @@ h2 {
 
 .certifications-carousel .carousel-track {
   display: flex;
-  overflow-x: hidden; /*changed*/
-  scroll-behavior: auto; /*changed*/
+  overflow-x: hidden; /*changed hidden*/
+  scroll-behavior: auto; /*changed auto*/
   gap: 2rem;
   padding: 1rem 0;
   scrollbar-color: #00ffe1 #232f3e;
