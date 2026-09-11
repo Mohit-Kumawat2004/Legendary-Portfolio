@@ -1,0 +1,319 @@
+.certifications {
+  padding: 80px 0;
+  /* background-color: #021128; */
+  color: #e0e0e0; /* Light text color */
+  text-align: center;
+}
+
+.certifications .container {
+  max-width: 1900px; /* Max width for content */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.certifications .section-title {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: var(--text-primary); /* Your neon color */
+  text-shadow: 0 0 10px rgba(0, 255, 225, 0.5), 0 0 20px rgba(0, 255, 225, 0.3);
+}
+
+.certifications-carousel .carousel-track {
+  display: flex;
+  overflow-x: hidden; /*changed hidden*/
+  scroll-behavior: auto; /*changed auto*/
+  gap: 2rem;
+  padding: 1rem 0;
+  scrollbar-color: #00ffe1 #232f3e;
+  scrollbar-width: thin;
+}
+.certifications-carousel .carousel-track::-webkit-scrollbar {
+  height: 12px;
+  /* background: #232f3e; */
+  border-radius: 8px;
+}
+.certifications-carousel {
+  position: relative; /* Required for arrow positioning */
+}
+
+.certificate-card {
+  flex-shrink: 0;
+  width: 300px; /* Fixed width for each card, adjust as needed based on how many you want visible */
+  height: 200px; /* Fixed height for landscape cards */
+  margin-right: 20px; /* Space between cards */
+  /* background-color: #1f2937; */
+  border: 2px solid #00ffe1; /* Neon border */
+  border-radius: 8px;
+  overflow: hidden; /* Important to clip image if it goes outside, though object-fit should prevent this */
+  box-shadow: 0 0 20px #00ffe1, 0 0 40px #00ffe1; /* Neon shadow */
+  display: flex; /* Use flex to center the image within the card */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 10px; /* Add padding to the card itself, so the image gets an automatic border/margin */
+  box-sizing: border-box; /* Include padding in the card's total width/height */
+}
+
+.certificate-card img {
+  display: block;
+  width: 100%; /* Make image take 100% of the available width inside the padded card */
+  height: 100%; /* Make image take 100% of the available height inside the padded card */
+  object-fit: cover; /* This is the key: scales the image to fit fully within the element, maintaining aspect ratio. Will letterbox if aspect ratios don't match. */
+  border-radius: 4px; /* Slight border-radius for image itself */
+  /* No padding or max-width/height here, as the card's padding handles the spacing */
+}
+.certificate-card:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 0 25px rgba(0, 255, 225, 0.6); /* Stronger neon shadow on hover */
+}
+
+.carousel-hover-zone {
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  z-index: 5;
+  pointer-events: auto;
+}
+.carousel-hover-zone.left {
+  left: 0;
+}
+.carousel-hover-zone.right {
+  right: 0;
+}
+
+/* Scroll Indicators */
+.scroll-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+.scroll-indicators .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #00ffe1;
+  opacity: 0.4;
+  transition: 0.3s;
+}
+.scroll-indicators .dot.active {
+  opacity: 1;
+  box-shadow: 0 0 10px #00ffe1;
+}
+
+/* Arrow Buttons */
+.carousel-arrows {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none; /* allows scroll to pass through unless on buttons */
+}
+
+.carousel-arrows .arrow {
+  pointer-events: auto;
+  font-size: 2rem;
+  color: #00ffe1;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 15px;
+  margin: 0 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 15px #00ffe1;
+  transition: 0.3s;
+}
+.carousel-arrows .arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+@media (max-width: 900px) {
+  .carousel-hover-zone {
+    display: none; /* Hide on mobile */
+  }
+}
+/* Responsive adjustments for number of visible cards */
+@media (min-width: 10px) {
+  .certificate-card {
+    width: 350px; /* Larger cards on wider screens */
+    height: 230px;
+  }
+  .nav-container {
+    justify-content: space-between; /* Ensures left & right split */
+    gap: 6rem;
+  }
+
+  .nav-logo {
+    margin-right: auto; /* Pushes the logo to far left */
+  }
+
+  .nav-menu {
+    margin-left: auto; /* Pushes the menu to far right */
+  }
+}
+
+@media (min-width: 992px) {
+  .certificate-card {
+    width: 400px; /* Even larger cards on large screens */
+    height: 260px;
+  }
+}
+
+/*Badges*/
+.badges {
+  padding: 80px 0;
+  /* background-color: #0e1c39;  */
+  color: #e0e0e0; /* Light text color */
+  text-align: center;
+}
+
+.badges .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.badges .section-title {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: var(--text-primary);
+  text-shadow: 0 0 10px rgba(0, 255, 225, 0.5), 0 0 20px rgba(0, 255, 225, 0.3); /* Neon glow */
+}
+
+.badges-carousel {
+  position: relative;
+  overflow: hidden; /* Hide overflowing badges */
+  padding: 20px 0; /* Vertical padding for arrows/shadows */
+}
+
+.badges-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Smooth scrolling */
+  align-items: center; /* Vertically center hexagonal badges */
+}
+
+.badge-card {
+  flex-shrink: 0; /* Prevent badges from shrinking */
+  width: 192px; /* Base width of the hexagon */
+  height: calc(
+    192px * 1.1547
+  ); /* Height for a perfect hexagon (width * sqrt(3)/2 * 2) */
+  margin: 0 10px; /* Horizontal space between badges */
+  /* background-color: #1f2937;  */
+  border: 2px solid #00ffe1; /* Neon border */
+  box-shadow: none; /* Neon shadow */
+  position: relative;
+  clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  ); /* Hexagonal shape */
+  display: flex;
+  z-index: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden; /* Hide anything outside the clipped path */
+  padding: 5px; /* Small internal padding */
+  box-sizing: border-box; /* Include padding in dimensions */
+}
+
+.badge-card::before {
+  content: "";
+  position: absolute;
+  inset: -12px; /* Glow size, adjust as needed */
+  z-index: -1;
+  border-radius: 20px; /* Softens the glow corners */
+  background: none;
+  box-shadow: 0 0 32px 12px #00ffe1, 0 0 64px 24px #00ffe1;
+  pointer-events: none;
+  /* No clip-path here, so the glow is not clipped */
+}
+
+.badge-card img {
+  width: 105%; /* Adjust size to fit nicely within the hexagon */
+  height: auto;
+  object-fit: contain; /* Ensure image fits and maintains aspect ratio */
+  display: block;
+  margin-bottom: 5px; /* Space between image and text */
+}
+
+.badge-info {
+  position: absolute; /* Position text over the badge if desired, or below */
+  bottom: 5px; /* Adjust as needed */
+  left: 0;
+  right: 0;
+  color: #e0e0e0;
+  font-size: 0.8em;
+  line-height: 1.2;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Semi-transparent background for readability */
+  padding: 3px 5px;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.badge-info h4 {
+  margin: 0;
+  font-size: 1em;
+  color: #00ffe1;
+}
+
+.badge-info p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+/* Carousel Arrow Styles (re-using existing styles) */
+.badges-carousel .carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #00ffe1;
+  border: none;
+  font-size: 2em;
+  padding: 15px 10px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 225, 0.3);
+}
+
+.badges-carousel .carousel-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #00b3a1;
+  box-shadow: 0 0 20px rgba(0, 255, 225, 0.7);
+}
+
+.badges-carousel .carousel-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.badges-carousel .left-arrow {
+  left: 0px;
+}
+
+.badges-carousel .right-arrow {
+  right: 0px;
+}
+
+/* Optional: Hide arrows if there's only one or no badge */
+.badges-track:has(:only-child) + .right-arrow,
+.badges-track:has(:only-child) + .right-arrow + .left-arrow,
+.badges-track:empty + .right-arrow,
+.badges-track:empty + .right-arrow + .left-arrow {
+  display: none;
+}

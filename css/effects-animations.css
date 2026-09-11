@@ -1,0 +1,161 @@
+/*Breathing Effects*/
+@keyframes breathe {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  } /* Slightly larger */
+  100% {
+    transform: scale(1);
+  }
+}
+.breathe-heading {
+  display: inline-block; /* Essential for transform to work correctly on inline elements */
+  animation: breathe 0.8s ease-in-out infinite alternate; /* Apply the breathing animation */
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+}
+
+h2 {
+  color: var(--accent-green);
+  text-shadow: 0 0 10px rgba(0, 255, 225, 0.5), 0 0 20px rgba(0, 255, 225, 0.3);
+}
+
+/*Boncing Efffects*/
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-18px);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-6px);
+  }
+  80% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes bounce-card {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.08) translateY(-12px);
+  }
+  50% {
+    transform: scale(0.98) translateY(0);
+  }
+  70% {
+    transform: scale(1.03) translateY(-6px);
+  }
+}
+
+.bounce-heading {
+  display: inline-block;
+  animation: bounce 1s infinite;
+}
+
+/* --- Animation for Floating/Pulsing Emojis --- */
+
+.animated-emoji {
+  display: inline-block;
+  animation: pulse-emoji 2s ease-in-out infinite alternate; /* Option 2: Subtle grow and shrink pulse */
+}
+
+/* Keyframes for the Pulsing animation (Alternative) */
+@keyframes pulse-emoji {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  } /* Emojis grow to 105% of their size */
+  100% {
+    transform: scale(1);
+  }
+}
+
+/*Rocket Launching*/
+#rocket-launch {
+  position: fixed;
+  left: -60px;
+  bottom: -60px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+}
+
+#rocket-launch .fa-rocket {
+  font-size: 5rem;
+  color: beige;
+  filter: drop-shadow(0 0 16px #00f0ff);
+  transition: transform 0.2s;
+  animation: rocket-fly 5s ease-in-out infinite;
+}
+
+/* Animation keyframes */
+@keyframes rocket-fly {
+  0% {
+    left: -60px;
+    bottom: -60px;
+    opacity: 1;
+    transform: rotate(-135deg) scale(1);
+  }
+
+  20% {
+    left: 10vw;
+    bottom: 10vh;
+    opacity: 0.95;
+    transform: rotate(-135deg) scale(1.1);
+  }
+
+  40% {
+    left: 30vw;
+    bottom: 30vh;
+    opacity: 0.9;
+    transform: rotate(-135deg) scale(1.15);
+  }
+
+  50% {
+    left: 40vw;
+    bottom: 45vh;
+    opacity: 1;
+    transform: rotate(-135deg) scale(1.25);
+  }
+
+  70% {
+    left: 60vw;
+    bottom: 65vh;
+    opacity: 0.9;
+    transform: rotate(-135deg) scale(1.15);
+  }
+
+  80% {
+    left: 80vw;
+    bottom: 80vh;
+    opacity: 0.8;
+    transform: rotate(-135deg) scale(1);
+  }
+
+  90% {
+    left: 95vw;
+    bottom: 95vh;
+    opacity: 0.6;
+    transform: rotate(-135deg) scale(0.8);
+  }
+
+  100% {
+    left: 100vw;
+    bottom: 100vh;
+    opacity: 0;
+    transform: rotate(-135deg) scale(0.6);
+  }
+}

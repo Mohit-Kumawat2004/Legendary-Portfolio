@@ -1,0 +1,138 @@
+/* Circular Skill Progress Bar */
+.circle-skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+.circle-progress {
+  --size: 96px;
+  --stroke: 10px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: conic-gradient(from 0deg, #ff6a00, #a64ac9, #ff6a00);
+
+  box-shadow: 0 0 12px #ff6a00, 0 0 24px #a64ac9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.circle-skill:hover .circle-progress {
+  transform: scale(1.06);
+  box-shadow: 0 0 18px #ff6a00, 0 0 34px #a64ac9;
+}
+
+.circle-progress::before {
+  content: "";
+  position: absolute;
+  width: calc(var(--size) - var(--stroke) * 2);
+  height: calc(var(--size) - var(--stroke) * 2);
+  background: #0f172a;
+  border-radius: 50%;
+  top: var(--stroke);
+  left: var(--stroke);
+  z-index: 1;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.circle-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 0.6rem;
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-shadow: 0 0 6px rgba(0, 255, 225, 0.35);
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.circle-progress .circle-icon {
+  position: relative;
+  font-size: 1.7em;
+  color: #ffffff;
+  text-shadow: 0 0 8px #ff6a00, 0 0 16px #a64ac9;
+  z-index: 2;
+}
+.circle-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  gap: 3rem 2.5rem;
+  justify-items: center;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+  .circle-skills-grid {
+    grid-template-columns: 1fr; /* Stack on small screens */
+  }
+}
+
+/* Blob Container */
+.blob-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: auto;
+}
+
+/* Blob Shape */
+.blob-shape svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 25px #00cec9);
+  color: var(--accent-blue);
+}
+
+/* Image inside the blob */
+.home-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-image img {
+  width: 400%;
+  max-width: 400px;
+  height: auto;
+  z-index: 2;
+  position: relative;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Optional floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Optional for shadow behind blob */
+.blob-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}

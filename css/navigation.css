@@ -1,0 +1,138 @@
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #0a0a23;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  transition: var(--transition-smooth);
+  height: 3.9rem;
+}
+.nav-menu a {
+  font-size: 1.2rem; /* You can increase this further if needed */
+}
+
+/* Neon Scroll Progress Bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  z-index: 2000; /* Above navbar */
+  background: linear-gradient(90deg, #00ffe1, #3b82f6, #ff00aa);
+  box-shadow: 0 0 12px #00ffe1, 0 0 24px #ff00aa;
+  border-radius: 0 0 8px 8px;
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 3rem;
+  gap: 0;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icons and text */
+  font-size: 1.2rem; /* Slightly smaller */
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  min-width: 0;
+  margin-right: 3rem;
+  white-space: nowrap;
+}
+
+.logo-text {
+  color: yellow;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.nav-menu {
+  display: flex;
+  /* gap: clamp(1rem, 3vw, 2rem); */
+  gap: clamp(0.7rem, 2.5vw, 1.2rem);
+  color: slateblue;
+  align-items: center;
+  margin-left: 0;
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+  position: relative;
+  font-size: clamp(1rem, 2vw, 1rem);
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #00ffe1 !important;
+  outline: none;
+  background: none;
+  box-shadow: none;
+}
+.nav-link:focus,
+.nav-link:active {
+  background: none !important;
+  color: #00ffe1 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: fuchsia;
+  transition: var(--transition-smooth);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background: var(--text-primary);
+  margin: 3px 0;
+  transition: var(--transition-smooth);
+  border-radius: 2px;
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
