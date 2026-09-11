@@ -1,84 +1,147 @@
-# ⚔️ Mohit Kumawat — Digital Warrior
+# ⚔️ Mohit Kumawat — Salesforce Developer
 
-> 🚨 *This isn’t a portfolio. It’s a digital graveyard of code, chaos, and liquid insomnia.*
-*Scripts bleed. Logic screams. The brew never runs dry*
+> 🚨 *Not just another portfolio. A collection of Salesforce builds, integrations, experiments, and the occasional battle with governor limits.*
+>
+> *Business requirements become Apex. Systems become connected. And somewhere between the two, things get interesting.*
 
-![Banner](./assets/Tech-Home.png)
 
 ---
 
 ## 🧠 Who TF Am I?
 
-I'm **Mohit**, and I don’t just *write code* — I **launch digital weapons**.  
-From gesture-controlled games to full-stack apps, if it's got logic, pixels, or power — I own it.
+I'm **Mohit**, a Salesforce Developer working on client projects and building solutions across **Salesforce Development, CPQ, Revenue Cloud, and Integrations**.
+
+I enjoy getting into the technical side of a requirement — understanding the business process, figuring out how data should move, exploring the architecture, and turning the whole thing into something that actually works.
+
+From **Apex and LWC** to **REST APIs, asynchronous processing, webhooks, authentication, and external system integrations**, I like working where Salesforce meets the rest of the ecosystem.
 
 ---
 
-## 🔥 Tech Stack? I Call It My Arsenal
+## ⚡ My Salesforce Arsenal
 
-| 🧠 Languages | 🛠️ Frameworks        | ⚙️ Tools             | 🧩 Skills               |
-|-------------|----------------------|----------------------|-------------------------|
-| Python      | React                | Git                  | Fast Debugger           |
-| JavaScript  | Node                 | Firebase             | UI Freak                |
-| C++         | Flask                | MongoDB              | API Hunter              |
-| Bash        | Django, OpenCV       | Postman              |                         |
-
----
-
-## 💣 Battle-Tested Projects
-
-### 🎮 **Gesture Shooter**
-> Raise your hand. Fire like a beast.  
-> Built with Python + OpenCV — **No controller, just chaos.**
-
-### 🧠 **GitHub Profile Finder**
-> Stalk devs like a pro. View heatmaps, stats & flex UI.  
-> Tech: React + GitHub API
-
-### 🚀 **Portfolio Site**
-> Sleek, smooth, and sharp — like a katana made of CSS.
+| ☁️ Salesforce              | 🔌 Integrations  | 🧠 Development           | 🛠️ Tools  |
+| -------------------------- | ---------------- | ------------------------ | ---------- |
+| Apex                       | REST APIs        | Lightning Web Components | Git        |
+| CPQ                        | Webhooks         | Triggers                 | GitHub     |
+| Revenue Cloud              | API Callouts     | Queueable Apex           | Postman    |
+| Salesforce Configuration   | Shopify          | Service Classes          | Jira       |
+| Profiles & Permission Sets | Cloudinary       | SOQL / DML               | Salesforce |
+| Reports & Dashboards       | External Systems | Async Processing         | VS Code    |
 
 ---
 
-## 📸 Screenshot Mode: ON
+## 💣 Battle-Tested Work
 
-![Demo](./assets/Tech-About-Me.png)
-![Demo](./assets/Tech-Projects.png)
-![Demo](./assets/Tech-Projects-2.png)
-![Demo](./assets/Technical-Skills.png)
-![Demo](./assets/Tech-Wars.png)
-![Demo](./assets/Tech-Certificates.png)
-![Demo](./assets/Tech-Badges.png)
+### ☁️ **Salesforce Client Projects**
 
+Working on real-world Salesforce enhancements across different stages of the development lifecycle — from **requirement analysis and solution design to development, testing, and technical documentation**.
 
-
-*UI so clean it looks like it writes its own code.*
+Experience includes Salesforce configuration, field-level security, profiles, permission sets, reporting requirements, integration-related changes, and business-process-driven enhancements.
 
 ---
 
-## 🧾 Real Talk
+### 🧩 **Salesforce CPQ**
 
-> “While you debug errors… I debug reality.”  
-> – Probably me, mid-ritual in front of a glowing screen at 3AM
+Built POCs and explored practical CPQ scenarios involving:
+
+* **Amendments**
+* **Assets**
+* **Co-Terminated Quotes**
+* Product and quoting processes
+* CPQ configuration and business flows
+
+---
+
+### 🔗 **Salesforce × Shopify Integration**
+
+Built a Salesforce–Shopify integration to synchronize **customers and products** between both platforms.
+
+The architecture uses:
+
+`Trigger → Queueable Apex → Service Layer → Shopify REST API`
+
+Implemented concepts including:
+
+* REST API integration
+* Named Credentials & External Credentials
+* Queueable Apex for asynchronous callouts
+* Apex service-layer architecture
+* Shopify customer & product synchronization
+* Shopify webhooks
+* Salesforce endpoints for inbound communication
+* Sync status tracking
+* Bi-directional data synchronization
+
+> Basically: Salesforce talks to Shopify, Shopify talks back, and everyone stays informed.
+
+---
+
+### 🖼️ **Product Catalog LWC + Cloudinary**
+
+Built a **Product Catalog Lightning Web Component** to display products with images.
+
+Initially explored Salesforce Static Resources and Notes & Attachments, then moved toward a more scalable approach using the **Cloudinary API** for external image hosting and automated uploads.
+
+**Result:**
+
+`Less Salesforce storage → Less manual work → More scalable image management`
+
+---
+
+### 📊 **Salesforce Reporting POC**
+
+Created a reporting POC using **Accounts and Opportunities**, including analysis of:
+
+* Closed Won
+* Closed Lost
+* Open Opportunities
+
+Built using a **Matrix Report** to explore how Salesforce reporting can turn raw CRM data into something actually useful.
+
+---
+
+## 🧪 Experiments & Technical Rabbit Holes
+
+Not everything starts as a client ticket.
+
+Some of my work involves taking a requirement, breaking it down, researching the available approaches, building a POC, discovering what doesn't scale, and then finding a better architecture.
+
+That's where I've explored things like:
+
+`Apex → APIs → Authentication → Async Processing → Webhooks → External Systems → Data Synchronization`
+
+The goal isn't simply to make something work.
+
+It's to understand **why it works, how it communicates, and what happens when the system gets bigger.**
+
+---
+
+## 🧠 How I Think About Engineering
+
+> **Requirement → Understand the process → Design the solution → Build → Test → Question everything → Make it better**
+
+I'm particularly interested in the technical side of Salesforce — **how data moves between systems, how integrations are structured, how authentication is handled, how asynchronous processing fits into an architecture, and how individual Salesforce components come together as one system.**
+
+The UI is only one part of the story.
+
+I'm usually more interested in **what's happening behind it.**
 
 ---
 
 ## 🕸️ Links That Matter
 
-- 🔗 [Portfolio Live](https://mohit-kumawat2004.github.io/Legendary-Portfolio/)  
-- 🛠️ [GitHub](https://github.com/Mohit-Kumawat2004)
-- 🏆 [LeetCode](https://leetcode.com/u/Mohit-Kumawat04/)  
-- 💼 [LinkedIn](https://www.linkedin.com/in/mohit-kumawa435ab624bt-/)
-- 🟢 [GeeksforGeeks](https://www.geeksforgeeks.org/user/mohitkumawat04/)  
-- 🔶 [Coding Ninjas](https://www.naukri.com/code360/profile/MohitKumawat)
-- 🌐 [Certifications](https://www.linkedin.com/in/mohit-kumawa435ab624bt-/details/certifications/)  
+* 🔗 [**Portfolio Live**](https://mohit-kumawat2004.github.io/Legendary-Portfolio/)
+* 🛠️ [**GitHub**](https://github.com/Mohit-Kumawat2004)
+* 🏆 [**LeetCode**](https://leetcode.com/u/Mohit-Kumawat04/)
+* 💼 [**LinkedIn**](https://www.linkedin.com/in/mohit-kumawa435ab624bt-/)
+* 🟢 [**GeeksforGeeks**](https://www.geeksforgeeks.org/user/mohitkumawat04/)
+* 🔶 [**Coding Ninjas**](https://www.naukri.com/code360/profile/MohitKumawat)
+* 🌐 [**Certifications**](https://www.linkedin.com/in/mohit-kumawa435ab624bt-/details/certifications/)
 
 ---
 
-## ⚡ The Footer of Fury
+## ⚔️ The Footer
 
-> © 2025 Mohit Kumawat • Built with 🔥, sweat & sleepless nights  
-> *Deploying vibes. One repo at a time.*
-
-
-
+> © 2026 Mohit Kumawat • Salesforce, APIs & controlled chaos.
+>
+> *Building systems. Connecting systems. Understanding what happens underneath.*
