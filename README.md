@@ -131,12 +131,10 @@ I'm usually more interested in **what's happening behind it.**
 ## 🕸️ Links That Matter
 
 * 🔗 [**Portfolio Live**](https://mohit-kumawat2004.github.io/Legendary-Portfolio/)
-* 🛠️ [**GitHub**](https://github.com/Mohit-Kumawat2004)
 * 🏆 [**LeetCode**](https://leetcode.com/u/Mohit-Kumawat04/)
 * 💼 [**LinkedIn**](https://www.linkedin.com/in/mohit-kumawa435ab624bt-/)
 * 🟢 [**GeeksforGeeks**](https://www.geeksforgeeks.org/user/mohitkumawat04/)
 * 🔶 [**Coding Ninjas**](https://www.naukri.com/code360/profile/MohitKumawat)
-* 🌐 [**Certifications**](https://www.linkedin.com/in/mohit-kumawa435ab624bt-/details/certifications/)
 
 ---
 
