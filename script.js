@@ -1,3 +1,4 @@
+//Adding script.js
 particlesJS("particles-js", {
   particles: {
     number: { value: 150, density: { enable: true, value_area: 800 } },
